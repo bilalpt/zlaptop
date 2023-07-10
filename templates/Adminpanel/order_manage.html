@@ -1,0 +1,177 @@
+
+{%extends 'Adminpanel/common.html'%}
+
+
+{% block content %}
+<table class="table caption-top">
+<a href="{% url 'order_manage' %}"><h4>Order management</h4></a>    
+<thead>
+
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">User Name</th>
+        <th scope="col">image</th>
+        <th scope="col">Product name</th>
+        <th scope="col">mode_of_payment</th>
+        <th scope="col">Total price</th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+
+
+        <!-- <th scope="col">Edit/delete</th> -->
+
+
+
+
+      </tr>
+</thead>
+    <tbody>
+        {% for i in order %}
+      <tr>
+        <!-- <th scope="row">1</th> -->
+        <td>{{i.id}}</td>
+        <td>{{i.order_id.user.username}}</td>
+
+        <td scope="row"><img src="{{i.vproduct.vproduct.image.url}}" width="40px" height="40px" alt=""></td>
+        <td>{{i.vproduct.vproduct.product_name}}</td>
+        <td>{{i.order_id.mode_of_payment}}</td>
+        <td>{{i.order_id.total_amount}}</td>
+        <td>{{i.time}}</td>
+        <td>
+        {{i.status}}
+        
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#productModal2{{ forloop.counter }}">Edit</button>
+        </td>
+       
+        <div class="modal fade" id="productModal2{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="productModalLabel">Edit Product</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="{% url 'update_status' i.id %}" method ="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {% if i.status == 'Pending' %}
+                        <div>
+                          <div class="form-group">
+                            <input class="ml-3" type="radio" name="status" value="Pending"checked    >
+                            <label for="dreamweaver" class="ml-2 mt-2" >Pending</label>
+                          </div>
+
+
+                          <div class="form-group">
+                            <input class="ml-3" type="radio" name="status" value="Order Confirmed"  >
+                            <label for="dreamweaver" class="ml-2 mt-2" >Order Confirmed</label>
+                          </div>
+
+
+                          <div class="form-group">
+                            <input class="ml-3" type="radio" name="status" value="Out for delivery" >
+                            <label for="dreamweaver" class="ml-2 mt-2" >out for delivery</label>
+                          </div>
+
+                          <div class="form-group">
+                            <input class="ml-3" type="radio" name="status" value="Delivered" >
+                            <label for="dreamweaver" class="ml-2 mt-2" >delivered</label>
+                          </div>
+                          
+                        </div>
+                        {% elif i.status == 'Order Confirmed' %}
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Pending"   >
+                          <label for="dreamweaver" class="ml-2 mt-2" >Pending</label>
+                        </div>
+
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Order Confirmed" checked    >
+                          <label for="dreamweaver" class="ml-2 mt-2" >Order Confirmed</label>
+                        </div>
+
+
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Out for delivery" >
+                          <label for="dreamweaver" class="ml-2 mt-2" >out for delivery</label>
+                        </div>
+
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Delivered" >
+                          <label for="dreamweaver" class="ml-2 mt-2" >delivered</label>
+                        </div>
+                        
+                      </div>
+
+                        {% elif i.status == 'Out of delivery' %}
+
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Pending"   >
+                          <label for="dreamweaver" class="ml-2 mt-2" >Pending</label>
+                        </div>
+
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Order Confirmed"  >
+                          <label for="dreamweaver" class="ml-2 mt-2" >Order Confirmed</label>
+                        </div>
+                         
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Out for delivery"   checked>
+                          <label for="dreamweaver" class="ml-2 mt-2" >out for delivery</label>
+                        </div>
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Delivered">
+                          <label for="dreamweaver" class="ml-2 mt-2" >delivered</label>
+                        </div>
+
+                  </div>
+                  {% else  %}
+
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Pending"   >
+                          <label for="dreamweaver" class="ml-2 mt-2" >Pending</label>
+                        </div>
+
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Order Confirmed"  >
+                          <label for="dreamweaver" class="ml-2 mt-2" >Order Confirmed</label>
+                        </div>
+                         
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Out for delivery"   checked>
+                          <label for="dreamweaver" class="ml-2 mt-2" >out for delivery</label>
+                        </div>
+                        <div class="form-group">
+                          <input class="ml-3" type="radio" name="status" value="Delivered"checked>
+                          <label for="dreamweaver" class="ml-2 mt-2" >delivered</label>
+                        </div>
+                  </div>
+                  {% endif %}
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </form>
+              </div>
+        {% endfor %}
+
+
+
+      </tr> 
+
+  </table>
+
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+{% endblock%}

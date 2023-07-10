@@ -1,0 +1,42 @@
+{% extends 'Adminpanel/common.html' %}
+{% block content %}
+
+  
+  <table class="table caption-top">
+  <a href="{% url 'varieant' %}"><h4> Product Details</h4></a>    
+  <thead>
+  
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">image</th>
+          <th scope="col">Product name</th>
+          <th scope="col">Processor</th>
+          <th scope="col">Price</th>
+            <th scope="col">Edit/delete</th>
+  
+  
+  
+  
+        </tr>
+      </thead>
+      <tbody>
+          {% for i in varieant %}
+        <tr>
+          <td>{{i.id}}</td>
+          <td scope="row"><img src="{{i.vproduct.image.url}}" width="40px" height="40px" alt=""></td>
+          <td>{{i.vproduct.product_name}}</td>
+          <td>{{i.Vprocessor.processor_list}}</td>
+          <td>{{i.price}}</td>
+
+
+          <td><a class="btn btn-primary me-2" href="{% url 'editvarieant' i.id %}" role="button">Edit</a>
+              <a class="btn btn-danger" href="{% url 'deletevarient' i.id %}" onclick="return confirm('Are You Sure Want to delete'+'{{i.product_name}}')">Delete</a>
+          </td>
+        </tr> 
+        {% endfor %}
+  
+    </table>
+  </form>
+  
+
+{% endblock %}

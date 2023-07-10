@@ -1,0 +1,310 @@
+{% extends 'footer.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs/build/css/alertify.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs/build/css/themes/default.min.css"/>
+<div class="main-wrapper mp-pusher" id="mp-pusher">
+
+    <!-- HEADER
+    ================================================== -->
+    <header class="fixed header-light-nav">
+
+
+
+        <!-- PAGE TITLE
+    ================================================== -->
+        <section class="cover-img"
+            style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">Check Out</h1>
+                </div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">check</a></li>
+                        <li><a href="#" style="color: aliceblue;"> Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- left pannel section -->
+
+        <section class="sm">
+            <div class="container" style="background-color: rgba(255, 255, 255, 0.753);">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="common-block">
+
+                            <div class="inner-title">
+                                <h4 class="mb-0">Billing Address</h4>
+                                <div class="common-block">
+                                    <a class="butn-style2 mt-4" href="{% url 'placeaddress' %}"><i class=""></i>Add Address<span class=""></span></a>
+                                </div>
+                            </div>
+                            <!-- right panel -->
+
+                            {% for i in a %}
+                            <div class="col-lg-11">
+
+                                <div class="common-block">
+
+                                    <a class="" href="{% url 'editbillingadd' i.id %}"><i class=""></i>Edit<span
+                                            class=""></span></a>
+                                    <a href="{% url 'delete_billaddress' i.id %}"> <button
+                                            class="btn btn-outline-light btn-lg px-5 ">remove</button> </a>
+
+
+                                    <input type="radio" checked="checked" name="address" id="{{ i.id }}" value="{{ i.id }}"    style="margin-left: 500px; ">
+                                    <form action="" method="POST" action="{% url  'checkout1' %}">
+                                        {% csrf_token %}
+        
+
+
+                                    <table>
+
+                                        <p>
+                                        <h6>{{i.name}},{{i.phone}}</h6>
+                                        </p>
+                                        <p>{{i.locality}} {{i.address}} {{i.landmark}}</p>
+                                        <p>{{i.city}} {{i.state}} {{i.pincode}},{{i.order_notes}}</p>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+                    </form>
+
+                            {% endfor %}
+                            <!-- end right panel -->
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- right pannel section -->
+
+                    <div class="col-lg-4 col-12 side-bar">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control " placeholder="Coupon Code" id="coupon_code" >
+                                <input type="text" id="order_total" value="{{ grand_total }}" hidden>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary p-2"   id="apply_coupon">Apply Coupon</button>
+                                </div>
+                            </div>
+                        
+
+                        <div class="widget">
+
+                            <div class="widget-title">
+                                <h5>Order Summary</h5>
+                            </div>
+
+
+                            <table class="table classic">
+                                <tbody>
+                                    <tr>
+                                        <th>Cart Subtotal:</th>
+                                        <td class="text-gray-dark">RS:{{sub_total}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping:</th>
+                                        <td class="text-gray-dark">RS:{{shipping}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estimated tax:</th>
+                                        <td class="text-gray-dark">{{ grand_total }}</td>
+                                    </tr>
+                                    <tr><td>
+                                        <span id="coupon_discounts"></span><br>
+                                        <span id="new_tot"></span>
+                                    </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                            <div>
+                                <label>
+                                    <input type="hidden" name="Cash on delivery" value="Cash on delivery" id="showSummaryYes" class="mt-4">
+                                    
+                                </label>
+                            </div>
+
+                            <label>
+                                <input type="hidden" name="payment" value="paypal" id="showSummaryYes" >
+                                    
+                            </label>
+                            <!-- <button class="btn btn-success btn-lg"  type="submit" style="margin-left: 50px; margin-top: 30px;">Place order</button> -->
+                            <button class="btn btn-success btn-lg"  type="submit" name="COD" style="margin-left: 65px; margin-top: 30px;">COD | Place order</button>
+                            <button class="btn btn-primary btn-lg payWithRazorpay" name="razorpay"  type="submit" style="margin-left: 70px; margin-top: 20px;">Pay with Razorpay</button>
+
+                                                         
+                </div>
+                        <script>
+                            alertify.set('notifier','position', 'bottom-right');
+                            ('{% for mes in messages %}')
+                            alertify.success('{{mes}}');
+                            ('{% endfor %}')
+                        
+                        </script>
+                        
+
+
+                    </div>
+                    <!-- end right pannel section -->
+
+                    <!-- end left pannel section -->
+
+                </div>
+            </div>
+</div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  $(document).ready(function () {
+
+    $('.payWithRazorpay').click(function (e) {
+      e.preventDefault();
+
+    //   var fname = $("[name='first_name']").val()
+    //   var phone = $("[name='phone']").val()
+    //   var email = $("[name='email']").val()
+      var token = $("[name='csrfmiddlewaretoken']").val()
+      var selectedAddress = $("input[name='address']:checked").val();
+      if(!selectedAddress)
+      {
+        swal("Alert!", "Address fields is mandatory!", "error");
+        console.log('All fields are empty');
+        return false;
+
+      }
+      else
+      {
+        $.ajax({
+           method:"GET",
+           url:"{%url 'razorpay'%}",
+           success: function(response) {
+            console.log(response.total_Price,'daxo')
+            to = parseInt(response.total_price)
+            var options = {
+              "key": "rzp_test_YNjyfpf26dEIeY", // Enter the Key ID generated from the Dashboard
+              "amount": 100*100,//response.total_price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+              "currency": "INR",
+              "name": "SMART SHOP",
+              "description": "Thank you for buying with us",
+              "image": "https://example.com/your_logo",
+              //"order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+              "handler": function (responseb){
+                alert(responseb.razorpay_payment_id);
+                  data = {
+                    
+                    "payment" : "Razorpay",
+                    // "payment_id" : responseb.razorpay_payment_id,
+                    "address": selectedAddress,
+                    csrfmiddlewaretoken: token
+                    
+                  }
+                    $.ajax({
+                      method:"POST",
+                      url:"{%url 'checkout1'%}",
+                      data: data,
+                      success: function (responsec) {
+                        window.location.href = '/Home/order_history'
+                        console.log(responsec)
+                        swal("Congratulations!", responsec.status,"success").then((value) => {
+                            
+                        });
+                      }
+
+                  });
+              },
+            //   "prefill": {
+            //       "name": fname,
+            //       "email" : email,
+            //       'contact' : phone,
+            //   },
+              
+              "theme": {
+                  "color": "#3399cc"
+              }
+          };
+          var rzp1 = new Razorpay(options);
+          rzp1.on('payment.failed', function (response){
+                  alert(response.error.code);
+                  alert(response.error.description);
+                  alert(response.error.source);
+                  alert(response.error.step);
+                  alert(response.error.reason);
+                  alert(response.error.metadata.order_id);
+                  alert(response.error.metadata.payment_id);
+          });
+          rzp1.open();
+            console.log(responsec);
+
+           }
+        });
+        
+ 
+      }
+
+
+
+
+
+      
+    });
+
+  });
+</script>
+
+
+<!-- Coupon Apply Start -->
+
+<script>
+    $(document).ready(function() {
+      $(document).on('click', '#apply_coupon', function(e) {
+        e.preventDefault();
+
+        var coupon_code = document.getElementById('coupon_code').value;
+        var order_total = document.getElementById('order_total').value;
+        console.log(coupon_code, order_total)
+    
+        $.ajax({
+          method: "POST",
+          url: "{% url 'apply_coupon' %}",
+
+          data: {
+            'coupon_code': coupon_code,
+            'order_total':order_total,
+            csrfmiddlewaretoken: '{{csrf_token}}'
+          },
+
+          success: function(response) {
+            console.log(response);
+            // alertify.error(response.status);
+            document.getElementById('new_tot').innerHTML = "Discounted Price: Rs."+response.new_total;
+            document.getElementById('new_price').value = response.new_total;
+            document.getElementById('coupon_code2').value = response.coupon_code;
+            document.getElementById('coupon_discounts').innerHTML = "Coupon Discount: Rs."+response.coupon_discount;
+            // $('.subtotal').load(location.href + " .subtotal");
+    
+          }
+        });
+      });
+    });
+    </script>
+    <!-- Coupon Apply End  -->
+  
+
+{% endblock %}

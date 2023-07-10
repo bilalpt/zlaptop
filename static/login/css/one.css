@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-family: sans-serif;
+    background-color: #f0f8ff9f;
+
+
+}
+.login-form{
+    background-color:#000000bd!important;
+    width: 396px;
+    height: 580px;
+    border-radius: 25px;
+    box-shadow:rgb(0 0 0 / 88%) 0px 2px 15px -3px, rgb(0 0 0) 0px 10px 20px -2px;
+}
+h2{
+    color: white;
+}
+.form-control{
+   width: 310px !important;
+   background-color: rgba(255, 255, 255, 0.105) !important;
+   color: #f0f8ff9f !important;
+}

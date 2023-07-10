@@ -1,0 +1,108 @@
+{% extends 'footer.html' %}
+{% block content %}
+{% load static %}
+<div class="main-wrapper mp-pusher" id="mp-pusher">
+
+    <!-- HEADER
+    ================================================== -->
+    <header class="fixed header-light-nav">
+
+
+
+            <!-- PAGE TITLE
+    ================================================== -->
+    <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+        <div class="container">
+
+            <div class="title-info">
+                <h1 style="color: aliceblue;">My Profile</h1></div>
+            <div class="breadcrumbs-info">
+                <ul class="ps-0">
+                    <li><a href="#" style="color: aliceblue;">check</a></li>
+                    <li><a href="#" style="color: aliceblue;"> Now</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    
+<div class="container ">
+    <div class="row justify-content-center mt-5">
+        <div class="usercreat border border-radius-3 card col-4 p-4 ">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <div class="mb-2">
+                        <label for="" class="form-label">brand_image </label>
+                        <input type="file" name="user_img" accept="image/png, image/jpeg, image/svg" id="" class="form-control bg-transparent">
+                    </div>
+
+
+                <div class="mb-2">
+                    <label for="" class="form-label">name</label>
+                    <input type="text" name="name" id="" class="form-control bg-transparent" required>
+                </div>
+                <div class="col-sm-6">
+
+
+                <div class="mb-2">
+                    <label for="" class="form-label">pincode</label>
+                    <input type="text" name="pincode" id="" class="form-control bg-transparent" required>
+                </div>
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">phone</label>
+                    <input type="text" name="phone" id="" class="form-control bg-transparent" required>
+                </div>
+
+                <div class="col-sm-6">
+
+
+                <div class="mb-2">
+                    <label for="" class="form-label">locality</label>
+                    <input type="text" name="locality" id="" class="form-control bg-transparent" required>
+                </div>
+                </div>
+
+
+                <div class="mb-2">
+                    <label for="" class="form-label">address</label>
+                    <input type="text" name="address" id="" class="form-control bg-transparent" required>
+                </div>
+                <div class="col-sm-6">
+
+                <div class="mb-2">
+                    <label for="" class="form-label">city</label>
+                    <input type="text" name="city" id="" class="form-control bg-transparent" required>
+                </div>
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">landmark</label>
+                    <input type="text" name="landmark" id="" class="form-control bg-transparent" required>
+                </div>
+                <div class="col-sm-6">
+
+                <div class="mb-2">
+                    <label for="" class="form-label">state</label>
+                    <input type="text" name="state" id="" class="form-control bg-transparent" required>
+                </div>
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">order_notes</label>
+                    <input type="text" name="order_notes" id="" class="form-control bg-transparent" required>
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-success btn-md"  type="submit" onsubmit="return submint('File Uploaded')">Create</button>
+                </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

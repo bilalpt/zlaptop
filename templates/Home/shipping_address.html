@@ -1,0 +1,126 @@
+{% extends 'footer.html' %}
+{% load static %}   
+{% block content %}
+
+
+
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper mp-pusher" id="mp-pusher">
+
+
+                <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">My Profile</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">check</a></li>
+                        <li><a href="#" style="color: aliceblue;"> Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+              <!-- ACCOUNT ORDERS
+        ================================================== -->
+        <section class="md">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <!-- left panel -->
+                    <div class="col-lg-4 col-sm-9 mb-2-3 mb-lg-0">
+
+                        <div class="account-pannel">
+
+                            <div class="p-4">
+
+                                <div class="text-center">
+
+
+                                    <div class="pb-3">
+
+
+                                        <img  class="img-fluid rounded-circle img-thumbnail" style="height: 100px; width: 100px;" src="{% static 'img/profile.jpg' %}"  >
+                                    </div>
+
+                                    <h6 class="mb-0 display-28">{{user.username}}</h6>
+                                    <small>Joined JUNE 06, 2023</small>
+
+                                </div>
+                            </div>
+
+                            <div class="list-group">
+                                <a class="list-group-items" href="{% url 'order_history' %}"><i class="ti-bag pe-2"></i>Orders</span></a>
+                                <a class="list-group-items" href="{% url 'my_profile' %}"><i class="ti-bag pe-2"></i>Profile<span class="badge badge-pill"></span></a>
+
+
+                                <a class="list-group-items" href="{% url 'edit_profile'%}"><i class="ti-bag pe-2"></i>Edit Profile<span class="badge badge-pill"></span></a>
+                                <a class="list-group-items" href="{% url 'profile_picture'%}"><i class="ti-bag pe-2"></i>Edit Profile<span class="badge badge-pill"></span></a>
+
+
+                                <a class="list-group-items" href="{% url 'shipping_address'%}"><i class="ti-location-pin pe-2"></i>Addresses</a>
+                                <a class="list-group-items" href="account-wishlist.html"><i class="ti-heart pe-2"></i>Wishlist</span></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- end left panel -->
+
+                    <!-- right panel -->
+                    <div class="col-lg-5">
+
+                        <div class="common-block">
+                            <!-- <button type="submit" class="butn-style2 mt-4">Update Profile</button> -->
+                            <a class="butn-style2 mt-4" href="{% url 'new_address' %}"><i class=""></i>Add Address<span class=""></span></a>
+
+
+
+                          
+
+
+
+                        </div>
+
+                        <!-- right panel -->
+                            {% for i in a %}
+                            <div class="col-lg-12">
+                        
+                                <div class="common-block">
+                                    <a class="" href="{% url 'edit_addres' i.id %}"><i class=""></i>Edit<span class=""></span></a>
+                                    <a href="{% url 'delete_address' i.id %}"> <button class="btn btn-outline-light btn-lg px-5 ">remove</button> </a>
+
+                        
+                                        <table>
+                                            <p><h6>{{i.name}},{{i.phone}}</h6></p>
+                                            <p>{{i.locality}} {{i.address}} {{i.landmark}}</p>
+                                            <p>{{i.city}} {{i.state}} {{i.pincode}},{{i.order_notes}}</p>
+                                        </table>
+                                            
+                                </div>
+                                            
+                            </div>
+                            {% endfor %}
+                        <!-- end right panel -->
+
+                    </div>
+                    <!-- end right panel -->
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </section>
+    </div>  
+    
+{% endblock %}    

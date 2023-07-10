@@ -1,0 +1,80 @@
+{% extends 'Adminpanel/common.html' %}
+{% block content %}
+
+{%load static%}
+            <!-- Recent Sales -->
+            <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                <div>
+
+                    <div class="container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <label for="start-date">Start Date</label>
+                            <input type="date" id="start-date" name="start-date" class="form-control"  value="{{s_date}}" >
+                        </div>
+                        <div class="col-md-4">
+                            <label for="end-date">End Date</label>
+                            <input type="date" id="end-date" name="end-date" class="form-control" value="{{e_date}}">
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-center p-3">
+                            <button class="btn btn-danger btn-block" type="submit">Generate Report</button>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+
+                    {% if sales %}
+                    <table id="example" class="display nowrap mt-5" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sale in sales  %}
+                        <tr class="mb-5">
+                            <td>{{sale.order_id.id}}</td>
+                            <td>{{sale.order_id.user}}</td>
+                            <td>{{sale.vproduct }}</td>
+                            <td>{{sale.order_id.created_at.date}}</td>
+                            <td>
+                                {{sale.order_id.total_amount |floatformat:2}}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+        
+                    </tfoot>
+                </table>
+                {% endif %}
+
+
+                    <script>
+                    const startDate = document.getElementById("start-date");
+                    const endDate = document.getElementById("end-date");
+                    
+                    endDate.addEventListener("change", function() {
+                        if (endDate.value < startDate.value) {
+                        alert("End date cannot be before start date.");
+                        endDate.value = '';
+                        }
+                    });
+                    </script>
+                    
+                    
+                    </div>
+                </div>
+
+            </div>
+            </div><!-- End Recent Sales -->
+
+{% endblock %}

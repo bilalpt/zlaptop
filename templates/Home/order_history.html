@@ -1,0 +1,84 @@
+{% extends 'footer.html' %}
+{% load static %}
+{% block content %}
+
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">LAPTOPS</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">Best</a></li>
+                        <li><a href="#" style="color: aliceblue;">Purchase Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ordedr history
+        ====================================================  -->
+    {% for item in order %}
+
+    <div class="py-5">
+        <div class="container">
+            <div class="col-lg-10">
+                <div class="row">
+
+                  <div class="card shadow ">
+                    <div class="card-body">
+        
+                      <div class="row product_data">
+                        <div class="col-md-2 my-auto">
+                          <img class="mx-5" src="{{ item.vproduct.vproduct.image.url }}" height="70px" width="70px" alt="image here">
+                        </div>
+        
+                        <div class="col-md-2 my-auto">
+                          <h6>{{ item.vproduct.vproduct.product_name }}</h6>
+                        </div>
+                        <div class="col-md-2 my-auto">
+                          <h6>Rs{{ item.order_id.total_amount }}</h6>
+        
+                        </div>
+                        <div class="col-md-2 my-auto">
+                           <a> <h6>{{item.status}}</h6>{{ item.time }}</a>
+          
+                          </div>
+
+                          <!-- <td class="align-middle"> -->
+                          <div class="col-md-2 my-auto">  
+                            {% if item.status == 'Delivered' %}
+                                <a href="#"><button class="btn btn-outline-primary px-5 mr-3 mt-3">Return</button></a>
+                            {% else %}
+                                <a href="{% url 'cancel_order' item.id %}"><button class="btn btn-outline-primary px-5 mr-3 mt-3">Cancel</button></a>
+                            {% endif %}
+                          </div>
+
+
+        
+                          <div class="col-md-2 my-auto">
+                            <a class="" href="{% url 'vieworderdetails' item.id %}">view-details</a>           
+                          </div>
+        
+                      </div>
+
+  
+        
+                       
+        
+                    </div>
+                </div>
+        
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'Adminpanel/common.html' %}
+{% block content %}
+<div class="container ">
+    <div class="row justify-content-center mt-5">
+        <div class="usercreat border border-radius-3 card col-5 p-4 ">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3cg">Product</label>
+
+                    <select class="form-select form-select-sm mt-3" aria-label=".form-select-sm example" name="product">
+                      {% for c in product_name %}
+                      <option value="{{c.id}}">{{ c.product_name }}</option>
+                      {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3cg">Processor</label>
+
+                    <select class="form-select form-select-sm mt-3" aria-label=".form-select-sm example" name="processor">
+                      {% for c in processor %}
+                      <option value="{{c.id}}">{{ c.processor_list }}</option>
+                      {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">Quantity</label>
+                    <input type="text" name="quantity" id="" class="form-control bg-transparent ">
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">Price </label>
+                    <input type="text" name="price"  id="" class="form-control bg-transparent">
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-success btn-lg"  type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

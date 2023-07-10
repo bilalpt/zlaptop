@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'admincss/common/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'admincss/common/css/bootstrap-icons.css' %}">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'admincss/common/css/style.css' %}" rel="stylesheet">
+
+
+  <!-- alertify -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <!-- Default theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div>
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <a href="{% url 'Alogout' %}" style="margin-right: 30px;">Log Out</a>
+
+
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'dashboard'%}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      
+
+      <!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gem"></i><span>Sales Report</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'salesreport' %}">
+              <i class="bi bi-circle"></i><span>Sales report</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+      
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+          <li>
+            <a href="{% url 'category' %}">
+              <i class="bi bi-circle"></i><span>Category</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'addcategory' %}">
+              <i class="bi bi-circle"></i><span>Add category</span>
+            </a>
+          </li>
+
+
+        </ul>
+      </li>
+      <!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'product' %}">
+              <i class="bi bi-circle"></i><span>Product Details</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'addproduct'%}">
+              <i class="bi bi-circle"></i><span>Add Product</span>
+            </a>
+          </li>
+
+
+        </ul>
+      </li>
+      
+      <!-- varieant -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>variations</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'varieant' %}">
+              <i class="bi bi-circle"></i><span>Variant Details</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'variations'%}">
+              <i class="bi bi-circle"></i><span>Add Variont</span>
+            </a>
+          </li>
+
+
+        </ul>
+      </li>
+
+      <!-- end variend -->
+
+     <!-- brand -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Brand</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'bdetails' %}">
+              <i class="bi bi-circle"></i><span>Brand Details</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'addbrand'%}">
+              <i class="bi bi-circle"></i><span>Addbrand Product</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <!-- endbrand -->
+      <!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Orders</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'order_manage' %}">
+              <i class="bi bi-circle"></i><span>Order details</span>
+            </a>
+          </li>
+          <!-- <li>
+            <a href="tables-data.html">
+              <i class="bi bi-circle"></i><span>orderd location details</span>
+            </a>
+          </li> -->
+        </ul>
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Customers</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'customers' %}">
+              <i class="bi bi-circle"></i><span>Customer details</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+      <!-- End Charts Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gem"></i><span>Coupon</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="icons-bootstrap.html">
+              <i class="bi bi-circle"></i><span>Add Coupon</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+      <!-- End Icons Nav -->
+    </ul>
+  </div>
+
+
+
+
+
+</body>
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+  <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+    </div>
+    <div class="credits">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mt-5">
+
+
+
+
+
+            {% block content %}{% endblock %}
+
+
+
+
+          </div>
+        </div>
+      <div>
+  </div>
+
+
+
+
+
+
+
+  </footer>  
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'admincss/common/js/apexcharts.min.js' %}"></script>
+  <script src="{% static 'admincss/common/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'admincss/common/js/main.js' %}"></script>
+
+  <!-- jquary -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <script>
+        alertify.set('notifier','position', 'top-right');
+        {% for msg in messages %}
+        alertify.success('{{msg}}');
+		
+        {% endfor %}
+	</script>
+
+ 
+
+
+
+</body>
+
+</html>

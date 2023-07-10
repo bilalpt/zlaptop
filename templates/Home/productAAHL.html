@@ -1,0 +1,78 @@
+{% extends 'footer.html' %}
+{% load static %}
+
+{% block content %}
+
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">LAPTOPS</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">Best</a></li>
+                        <li><a href="#" style="color: aliceblue;">Purchase Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+<section >
+    <div class="container">
+        <h2 style="text-align: center;">Products</h2>
+
+        <div class="row ">
+
+
+
+              <!-- <div class="row justify-content-center"> -->
+
+                    <div class="col-lg-3 col-4 side-bar order-2 order-lg-1 mt-3" >
+                        <div class="widget pb-5">
+                            <div class="widget-title">
+                                <h5>Categories</h5>
+                            </div>
+                            <div id="accordion" class="accordion-style2">
+                                <div class="card">
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                                        <div class="card-body">
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">Bussiness Laptop</a></li>
+                                                <li><a href="#">Chrom Book</a></li>
+                                                <li><a href="#">Commercial Laptop</a></li>
+                                                <li><a href="#">Gaming Laptop</a></li>
+    
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% for i in one %}
+                    <div class="product-grid mt-3 ms-3" style="width: 14rem; display:inline-block ">
+                        <div class="product-img">
+                            <a href="">
+                                <img src="{{i.vproduct.image.url}} "alt="..."></a>
+                        </div>
+                        <div class="product-description">
+                            <h3><a href="{% url 'product_details' i.vproduct.id 0 %}">{{i.vproduct.description}}</a></h3>
+                            <h4 class="price">
+                                            <span class="regular-price ">Rs{{i.price}}</span>
+                                        </h4>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+
+            </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}

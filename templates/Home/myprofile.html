@@ -1,0 +1,119 @@
+{% extends 'footer.html' %}
+{% load static %}   
+{% block content %}
+
+
+
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper mp-pusher" id="mp-pusher">
+
+
+                <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">My Profile</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">check</a></li>
+                        <li><a href="#" style="color: aliceblue;"> Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+              <!-- ACCOUNT ORDERS
+        ================================================== -->
+        <section class="md">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <!-- left panel -->
+                    <div class="col-lg-4 col-sm-9 mb-2-3 mb-lg-0">
+
+                        <div class="account-pannel">
+
+                            <div class="p-4">
+
+                                <div class="text-center" style="color: rgb(17, 91, 93);">
+                                    <div class="pb-3">
+                                        <img  class="img-fluid rounded-circle img-thumbnail" style="height: 100px; width: 100px;" src="{% static 'img/profile.jpg' %}"  >
+                                    </div>
+                                    <h6 class="mb-0 display-28"style="color:cadetblue;">{{user.username}}</h6>
+                                    <small>Joined JUNE 07, 2023</small>
+
+                                </div>
+                            </div>
+
+                            <div class="list-group">
+                                <a class="list-group-items" style="color:  rgb(17, 91, 93);" href="{% url 'order_history' %}"><i class="ti-bag pe-2"></i>Orders</span></a>
+                                <a class="list-group-items" href="#"><i class="ti-bag pe-2"></i>Profile<span class="badge badge-pill"></span></a>
+
+
+                                <a class="list-group-items" style="color:  rgb(17, 91, 93);" href="{% url 'edit_profile'%}"><i class="ti-bag pe-2"></i>Edit Profile<span class="badge badge-pill"></span></a>
+
+                                <a class="list-group-items"  style="color:  rgb(17, 91, 93);" href="{% url 'shipping_address'%}"><i class="ti-location-pin pe-2"></i>Addresses</a>
+                                <a class="list-group-items" style="color:  rgb(17, 91, 93);" href="account-wishlist.html"><i class="ti-heart pe-2"></i>Wishlist</span></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- end left panel -->
+
+                    <!-- right panel -->
+                    <div class="col-lg-5" style="color:  rgb(17, 91, 93);">
+
+                        <div class="common-block">
+
+                            
+
+
+
+
+                            <div class="inner-title" >
+                                <h4 class="mb-0" style="color:  rgb(17, 91, 93);">Profile Details</h4>
+                            </div>
+
+
+
+                           <div>
+                            <thead>
+                                <tr>
+                                  <th><h6>Name :</h6></th>
+                                </tr>
+                                <tr>
+                                    <td>{{user.username}}</td><td>{{user.last_name}}</td>
+
+                                </tr>
+                              </thead>
+                            </div>
+                            <div style="margin-top: 5%;">
+
+                              <thead>
+                                <tr>
+                                  <th><h6>Email :</h6></th>
+                                </tr>
+                                <tr>
+                                    <td>{{user.email}}</td>
+                                </tr>
+                              </thead>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- end right panel -->
+                </div>
+            </div>
+        </section>
+    </div>  
+    
+{% endblock %}    

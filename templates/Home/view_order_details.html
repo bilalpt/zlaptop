@@ -1,0 +1,47 @@
+{% extends 'footer.html' %}
+{% load static %}
+{% block content %}
+
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">LAPTOPS</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">Best</a></li>
+                        <li><a href="#" style="color: aliceblue;">Purchase Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ordedr history
+        ====================================================  -->
+    {% for item in order %}
+    <div class="d-flex justify-content-center ">
+           
+      <div class="p-5 w-50 h-50" style="border: 1px solid #dee2e6">
+          <h3>Order Details</h3>
+         <span>Order Date :    </span><span class="font-weight-bold" >  {{ item.time }}</span><br>
+         <span>Total Amount :   <span class="font-weight-bold">Rs{{ item.order_id.total_amount }} </span></span><br>
+         <span>Payment Method :   <span class="font-weight-bold">{{ item.order_id.mode_of_payment }}</span></span><br>
+         <span> Order Id:    </span><span class="font-weight-bold">{{ item.order_id.id }} </span></span><br>
+         <span>Address :    </span><span class="font-weight-bold">{{ item.order_id.address.name }}{{ item.order_id.address.phone }}</span></span><br>
+         <span></span><span class="font-weight-bold">{{ item.order_id.address.locality }}{{ item.order_id.address.address }}{{ item.order_id.address.landmark }}{{ item.order_id.address.city }}{{ item.order_id.address.state }}{{ item.order_id.address.pincode }}</span></span><br>
+
+         <!-- <span class="pt-3 d-flex justify-content-end">
+             <a href="/invoiceDownload/<%= orders._id %> " class="btn btn-outline-primary-2">Invoice Downlode</a>
+         </span> -->
+      </div>
+ </div>
+    {% endfor %}
+    
+
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'Adminpanel/common.html' %}
+
+{% block content %}
+
+<div style="margin-left: 900px;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form class="d-flex" method="GET" action="{% url 'search_category' %}">
+      <input class="form-control me-2" name="category" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </nav>
+</div>
+{% if two %}
+<table class="table caption-top">
+    <a href="{% url 'category' %}"><h4>Category</h4></a>
+    <thead>
+      <tr>
+        <!-- <th scope="col">id</th> -->
+        <th scope="col">id</th>
+        <th scope="col">image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Edit/delete</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in two %}
+      <tr>
+        <!-- <th scope="row">1</th> -->
+        <td>{{i.id}}</td>
+        {% if i.cart_img %}
+        <td scope="row"><img src="{{i.cart_img.url}}" width="40px" height="40px" alt=""></td>
+        {% endif%}
+        <td>{{i.category_name}}</td>
+        <td>{{i.description}}</td>
+        <td><a class="btn btn-primary me-2" href="{% url 'edi_category' i.id%}" role="button">Edit</a>
+            <a class="btn btn-danger" href="{% url 'delete_category' i.id %}" role="button" onclick="return confirm('Are You Sure Want to delete')">Delete</a></td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <h4>Not get please choos correct</h4>
+      {% endif %}
+  </table>
+
+{% endblock %}

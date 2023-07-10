@@ -1,0 +1,124 @@
+{% extends 'footer.html' %}
+{% load static %}
+{% block content %}
+
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">LAPTOPS</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">Best</a></li>
+                        <li><a href="#" style="color: aliceblue;">Purchase Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ordedr history
+        ====================================================  -->
+        {% if wishlist %}
+        {% for item in wishlist %}
+            <div class="py-5 cart_delete">
+                <div class="container">
+                    <div class="col-lg-8">
+                        <div class="row">
+
+                        <div class="card shadow ">
+                            <div class="card-body">
+                    
+                                <div class="row product_data">
+                                    <div class="col-md-3 my-auto">
+                                    <img class="mx-5" src="{{ item.vproduct.vproduct.image.url }}" height="70px" width="70px" alt="image here">
+                                    </div>
+                    
+                                    <div class="col-md-3 my-auto">
+                                    <h6>{{ item.vproduct.vproduct.description }}</h6>
+                                    </div>
+                                    <div class="col-md-2 my-auto">
+                                    <h6>Rs{{ item.vproduct.price }}</h6>
+                    
+                                    </div>
+                                    <div class="col-md-2 my-auto">
+                                        <input type="hidden" value="{{item.vproduct_id}}" class="product_id">
+                                        {% csrf_token %}
+                                        <a href="{% url 'product_details' item.vproduct.id 0 %}">View Product</a>
+                        
+                                    </div>
+                                    <div class="col-md-2 my-auto">
+                                        <button class="btn btn-danger delete-wishlidt-item">remove</button>
+                        
+                                    </div>
+
+                    
+                                </div>
+
+        
+                
+                            
+                
+                            </div>
+                        </div>
+                
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <h1 style="text-align: center;">Your wishlist is Empty</h1>
+                {% endif %}
+
+
+
+                
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>  
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+                <script>
+                    $(document).ready(function() {
+                      $('.delete-wishlidt-item').click(function(e) {
+                        e.preventDefault();
+                    
+                        var product_id = $(this).closest('.product_data').find('.product_id').val();
+                        var token = $('input[name=csrfmiddlewaretoken]').val();
+                    
+                        $.ajax({
+                          method: "POST",
+                          url: "{%url 'deletewishlidtitem'%}",
+                          data: {
+                            'product_id': product_id,
+                            'csrfmiddlewaretoken': token
+                          },
+                          success: function(response) {
+                            // console.log(response);
+                            alertify.success(response.status)
+                            $('.cart_delete').load(location.href + ".cart_delete");
+                          },
+                          error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                            alertify.error('An error occurred while deleting the cart item.');
+                          }
+                        });
+                      });
+                    });
+            </script>                
+
+    
+
+
+
+{% endblock %}

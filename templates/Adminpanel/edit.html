@@ -1,0 +1,112 @@
+{% extends 'Adminpanel/common.html' %}
+{% block content %}
+<div class="container ">
+    <div class="row justify-content-center mt-5">
+                        <!-- Start Messages Area -->
+                        {% if messages %}
+                        {% for message in messages%}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>{{message}}</strong>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <!-- End  Messages Area -->
+        <div class="usercreat border border-radius-3 card col-5 p-4 ">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- {% for i in messages %}
+                <div class="mb-2">
+                    <h6 style="text-align: center; margin-top: 2px;">{{i}}</h6>
+                </div>
+                 {% endfor %} -->
+                <div class="mb-2">
+                    <label for="" class="form-label">product name</label>
+                    <input type="text" name="Product_name" id=""value="{{product.product_name}}" class="form-control bg-transparent " >
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3cg">Brand</label>
+
+                    <select class="form-select form-select-sm mt-3" aria-label=".form-select-sm example" name="brandname">
+                      {% for c in brnd %}
+                      <option value="{{c.id}}">{{ c.brand_name }}</option>
+                      {% endfor %}
+                  </select>
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">description</label>
+                    <input type="text" name="description" id="" value="{{product.description}}" class="form-control bg-transparent">
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">price</label>
+                    <input type="text" name="price" id=""value="{{product.price}}" class="form-control bg-transparent">
+                </div>
+                <img src="{{product.image.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
+                <div class="mb-2">
+                   
+                    <label for="" class="form-label">image</label>
+                    <input type="file" name="image" accept="image/png, image/jpeg" id="" class="form-control bg-transparent ">
+                </div>
+                <img src="{{product.image1.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
+
+                <div class="mb-2">
+                    <label for="" class="form-label">image1</label>
+                    <input type="file" name="image1" accept="image/png, image/jpeg" id="" class="form-control bg-transparent ">
+                </div>
+                <img src="{{product.image2.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
+
+                <div class="mb-2">
+                    <label for="" class="form-label">image2</label>
+                    <input type="file" name="image2" accept="image/png, image/jpeg" id="" class="form-control bg-transparent ">
+                </div>
+                <img src="{{product.image3.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
+
+                <div class="mb-2">
+                    <label for="" class="form-label">image3</label>
+                    <input type="file" name="image3" accept="image/png, image/jpeg" id="" class="form-control bg-transparent ">
+                </div>
+
+                <div class="mb-2">
+                    <label for="" class="form-label">Spacifications</label>
+                    <input type="text" name="specs" id="" value="{{product.specs}}" class="form-control bg-transparent">
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3cg">Category</label>
+
+                    <select class="form-select form-select-sm mt-3" aria-label=".form-select-sm example" name="category">
+                      {% for c in cat %}
+                      <option value="{{c.id}}">{{ c.category_name }}</option>
+                      {% endfor %}
+                  </select>
+
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-success btn-lg"  type="submit" onsubmit="return submint('File Uploaded')">Update</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+    
+
+
+</div>
+
+<script>
+    alertify.set('notifier','position', 'bottom-right');
+    ('{% for mes in messages %}')
+    alertify.success('{{ mes }}');
+    ('{% endfor %}')
+
+</script>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends 'footer.html' %}
+{% block content %}
+{% load static %}
+<div class="main-wrapper mp-pusher" id="mp-pusher">
+
+    <!-- HEADER
+    ================================================== -->
+    <header class="fixed header-light-nav">
+
+
+
+        <!-- PAGE TITLE
+    ================================================== -->
+        <section class="cover-img"
+            style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">Success</h1>
+                </div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">check</a></li>
+                        <li><a href="#" style="color: aliceblue;"> Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="md">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+
+                        <div class="common-block text-center">
+
+                            <div class="inner-title">
+                                <h3 class="mb-0">Thank you for your order!</h3>
+                            </div>
+
+                            	<!--================Order Details Area =================-->
+		<div class="container">
+			<div class="row order_d_inner">
+			
+				
+
+				<div class="col-lg-4">
+					<div class="details_item">
+						<h4>Order Info</h4>
+						<ul class="list">
+							<li><a ><span>Order number</span> : 6433 </a></li>
+							<li><a ><span>Date&Time</span> : {{order.time}}</a></li>
+							<li><a ><span>Total</span> : {{order.total_amount}}</a></li>
+							<li><a ><span>Payment method</span> : {{order.mode_of_payment}}</a></li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="col-lg-4">
+					<div class="details_item">
+						<h4>Shipping Address</h4>
+						<ul class="list">
+							<li><a ><span>Street</span> : {{order.address.locality}}</a></li>
+							<li><a ><span>City</span> : {{order.address.city}}</a></li>
+							<li><a ><span>State</span> : {{order.address.state}}</a></li>
+							<li><a ><span>Postcode </span> : {{order.address.pincode}}</a></li>
+						</ul>
+					</div>
+				</div>
+			
+
+
+			</div>
+			<div class="order_details_table">
+				<h2>Order Details</h2>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Product</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for i in products %}
+							
+							<tr>
+								<td>
+									<p>{{i.vproduct.vproduct.product_name}}</p>
+								</td>
+								<td>
+									<h5>{{i.quantity}}</h5>
+								</td>
+								<td>
+									<p>{{i.order_id.total_amount}}</p>
+								</td>
+							</tr>
+
+
+							
+							{% endfor %}
+							<tr>
+								<td>
+									<h4>Shipping</h4>
+								</td>
+								<td>
+									<h5></h5>
+								</td>
+								<td>
+									<p>RS:40.00</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Total</p>
+								</td>
+								<td>
+									<h5>	</h5>
+								</td>
+								<td>
+									<p>{{order.total_amount}}</p>
+								</td>
+							</tr>
+							
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	<!--================End Order Details Area =================-->
+
+                            <p class="lead mb-4">
+                                <!-- Thank you for your payment. An automated payment receipt will be sent to your registered email. -->
+                            </p>
+
+                            <a href="" class="butn-style2 wide m-1">Back to home</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+        </section>
+        
+
+{% endblock %}

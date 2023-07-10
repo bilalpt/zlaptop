@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://smartshop.websitelayout.net/help-faq.html -->
+<html lang="en" class=" supports csstransforms3d"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- metas -->
+    
+    <meta name="author" content="Chitrakoot Web">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="Multipurpose eCommerce Template + Admin">
+    <meta name="description" content="Smartshop - Multipurpose eCommerce Template + Admin">
+
+    <!-- title  -->
+    <title>Smartshop - Multipurpose eCommerce Template + Admin</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="https://smartshop.websitelayout.net/img/logos/favicon.png">
+    <link rel="apple-touch-icon" href="https://smartshop.websitelayout.net/img/logos/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://smartshop.websitelayout.net/img/logos/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://smartshop.websitelayout.net/img/logos/apple-touch-icon-114x114.png">
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="./index_files/plugins.css">
+
+    <!-- theme core css -->
+    <link href="./index_files/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- PAGE LOADING
+    ================================================== -->
+    
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper mp-pusher" id="mp-pusher">
+
+        <!-- HEADER
+        ================================================== -->
+        <header class="fixed header-light-nav">
+
+            <div id="top-bar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-3 col-md-6">
+                            <div class="top-bar-info">
+                                <ul class="ps-0">
+                                    <li><a href="tel:01234567890"><i class="ti-mobile"></i><span class="d-none d-md-inline-block ps-2">(+123) 456 7890</span></a></li>
+                                    <li><a href="mailto:addyour@emailhere"><i class="ti-email"></i><span class="d-none d-md-inline-block ps-2">addyour@emailhere</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-9 col-md-6">
+                            <ul class="top-nav ps-0">
+                                <li class="nav-item dropdown">
+                                    <a href="https://smartshop.websitelayout.net/help-faq.html#" data-bs-toggle="dropdown" class="dropdown-toggle"><i class="far fa-user"></i></a>
+                                    <ul class="dropdown-menu p-4">
+                                        <li class="mb-2">
+                                            <div class="media align-items-center">
+                                                <img class="w-40px rounded-circle me-3" src="./index_files/01.png" alt="...">
+                                                <div class="media-body">Nancy Miller</div>
+                                            </div>
+
+                                        </li>
+                                        <li>
+                                            <a href="https://smartshop.websitelayout.net/help-faq.html#" class="dropdown-item">My Profile</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://smartshop.websitelayout.net/help-faq.html#" class="dropdown-item">Order List</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://smartshop.websitelayout.net/help-faq.html#" class="dropdown-item">Log Out</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="https://smartshop.websitelayout.net/help-faq.html#"><i class="far fa-heart"></i></a></li>
+                                <li>
+                                    <select>
+                                        <option>English</option>
+                                        <option>Deutsch</option>
+                                        <option>Italiano</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <select>
+                                        <option>$ USD</option>
+                                        <option>€ EUR</option>
+                                        <option>£ UKP</option>
+                                        <option>¥ JPY</option>
+                                    </select>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-default">
+
+                <!-- top search -->
+                <div class="top-search bg-primary">
+                    <div class="container-fluid">
+                        <form class="search-form" action="https://smartshop.websitelayout.net/help-faq.html#" method="GET">
+                            <div class="input-group">
+                                <span class="input-group-addon cursor-pointer">
+                                    <button class="search-form_submit fas fa-search display-27 text-white" type="submit"></button>
+                                </span>
+                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Type &amp; hit enter...">
+                                <span class="input-group-addon close-search"><i class="fas fa-times display-27 mt-2"></i></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end top search -->
+
+                <div class="container-fluid p-0">
+                    <div class="row align-items-center g-0">
+                        <div class="col-12 col-lg-12">
+                            <div class="menu_area alt-font">
+                                <nav class="navbar navbar-expand-lg navbar-light p-0 current">
+
+                                    <!-- category toggler -->
+                                    <a href="https://smartshop.websitelayout.net/help-faq.html#" id="trigger" class="menu-trigger"><i class="ti-menu"></i></a>
+                                    <!-- end category toggler -->
+
+                                    <div class="navbar-header navbar-header-custom">
+                                        <!-- logo -->
+                                        <a href="https://smartshop.websitelayout.net/index.html" class="navbar-brand logodefault"><img id="logo" src="./index_files/logo.png" alt="logo"></a>
+                                        <!-- end logo -->
+                                    </div>
+
+                                    <!-- menu toggler -->
+                                    <div class="navbar-toggler"></div>
+                                    <!-- end menu toggler -->
+
+                                    <!-- menu area -->
+                                    <ul class="navbar-nav mx-auto" id="nav" style="">
+
+                                        <li class="has-sub"><span class="submenu-button"></span><a href="https://smartshop.websitelayout.net/help-faq.html#">Home</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://smartshop.websitelayout.net/home-shop-1.html">Home 01</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/home-shop-2.html">Home 02</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/home-shop-3.html">Home 03</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/home-shop-4.html">Home 04</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/admin/index.html" target="_blank">Admin Dashboard</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub current"><span class="submenu-button"></span><a href="https://smartshop.websitelayout.net/help-faq.html#">Pages</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://smartshop.websitelayout.net/about-us.html">About Us</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/contact-us.html">Contacts</a></li>
+                                                <li class="active"><a href="https://smartshop.websitelayout.net/help-faq.html">Help / FAQ</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/product-comparison.html">Product Comparison</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/order-tracking.html">Order Tracking</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/order-tracking-detail.html">Order Tracking Detail</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/search-results.html">Search Results</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/404-page.html">404 Not Found</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/comingsoon.html">Coming Soon</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/newsletter.html">Newsletter</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/privacy-policy.html">Privacy Policy</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub"><span class="submenu-button"></span><a href="https://smartshop.websitelayout.net/help-faq.html#">Account</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://smartshop.websitelayout.net/login-register.html">Login / Register</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/account-password-recovery.html">Password Recovery</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/account-orders.html">Orders List</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/account-wishlist.html">Wishlist</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/account-profile.html">Profile Page</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/account-address.html">Contact / Shipping Address</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/account-tickets.html">My Tickets</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/account-single-ticket.html">Single Ticket</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub"><span class="submenu-button"></span><a href="https://smartshop.websitelayout.net/help-faq.html#">Mega Menu</a>
+                                            <ul class="row megamenu sub-menu">
+                                                <li class="col-lg-3 col-sm-12 has-sub"><span class="submenu-button"></span>
+                                                    <span class="mb-lg-2 d-block py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">Categories 01</span>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Internal SSD</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Memory Cards</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Home Theatres</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Unique Routers</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Security cameras</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Effective Laptops</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 col-sm-12 has-sub"><span class="submenu-button"></span>
+                                                    <span class="mb-lg-2 d-block py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">Categories 02</span>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Winterwear</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Sportswear</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Innerwear</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Ethnic Wear</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Cotton Lounge Wear</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Essential Swimwear</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 col-sm-12 has-sub"><span class="submenu-button"></span>
+                                                    <span class="mb-lg-2 d-block py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">Categories 03</span>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Computer Speakers</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Compact Headphones</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Best Choice Printers</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">PC Gaming</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Power banks</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Musical Instruments</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 col-sm-12 d-none d-lg-block">
+                                                    <span class="mb-lg-2 d-block py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">Current Offers</span>
+
+                                                    <div class="offer-slider owl-carousel owl-theme owl-loaded owl-drag">
+
+                                                        
+
+                                                        
+
+                                                        
+
+                                                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-663px, 0px, 0px); transition: all 1s ease 0s; width: 2323px;"><div class="owl-item cloned" style="width: 331.8px;"><div class="offer-banner-slider" style="background-image:url(img/offer-banner/offer-slide-02.jpg);">
+                                                            <div class="offer-text">
+                                                                <h6 class="mb-1 text-white font-weight-500">Women's</h6>
+                                                                <h4 class="font-weight-500"><a href="https://smartshop.websitelayout.net/help-faq.html#" class="text-white">Up to 70% Off</a></h4>
+                                                                <p>Lorem ipsum dolor sit amet consectetur</p>
+                                                                <a class="butn-style1 fill small" href="https://smartshop.websitelayout.net/help-faq.html#"><span>Buy Now</span></a>
+                                                            </div>
+                                                        </div></div><div class="owl-item cloned" style="width: 331.8px;"><div class="offer-banner-slider" style="background-image:url(img/offer-banner/offer-slide-03.jpg);">
+                                                            <div class="offer-text">
+                                                                <h6 class="mb-1 text-white font-weight-500">Electronics</h6>
+                                                                <h4 class="font-weight-500"><a href="https://smartshop.websitelayout.net/help-faq.html#" class="text-white">Mega Sale</a></h4>
+                                                                <p>Lorem ipsum dolor sit amet consectetur</p>
+                                                                <a class="butn-style1 fill small" href="https://smartshop.websitelayout.net/help-faq.html#"><span>Buy Now</span></a>
+                                                            </div>
+                                                        </div></div><div class="owl-item active" style="width: 331.8px;"><div class="offer-banner-slider" style="background-image:url(img/offer-banner/offer-slide-01.jpg);">
+                                                            <div class="offer-text">
+                                                                <h6 class="mb-1 text-white font-weight-500">Men's</h6>
+                                                                <h4 class="font-weight-500"><a href="https://smartshop.websitelayout.net/help-faq.html#">Up to 50% Off</a></h4>
+                                                                <p>Lorem ipsum dolor sit amet consectetur</p>
+                                                                <a class="butn-style1 fill small" href="https://smartshop.websitelayout.net/help-faq.html#"><span>Buy Now</span></a>
+                                                            </div>
+                                                        </div></div><div class="owl-item" style="width: 331.8px;"><div class="offer-banner-slider" style="background-image:url(img/offer-banner/offer-slide-02.jpg);">
+                                                            <div class="offer-text">
+                                                                <h6 class="mb-1 text-white font-weight-500">Women's</h6>
+                                                                <h4 class="font-weight-500"><a href="https://smartshop.websitelayout.net/help-faq.html#" class="text-white">Up to 70% Off</a></h4>
+                                                                <p>Lorem ipsum dolor sit amet consectetur</p>
+                                                                <a class="butn-style1 fill small" href="https://smartshop.websitelayout.net/help-faq.html#"><span>Buy Now</span></a>
+                                                            </div>
+                                                        </div></div><div class="owl-item" style="width: 331.8px;"><div class="offer-banner-slider" style="background-image:url(img/offer-banner/offer-slide-03.jpg);">
+                                                            <div class="offer-text">
+                                                                <h6 class="mb-1 text-white font-weight-500">Electronics</h6>
+                                                                <h4 class="font-weight-500"><a href="https://smartshop.websitelayout.net/help-faq.html#" class="text-white">Mega Sale</a></h4>
+                                                                <p>Lorem ipsum dolor sit amet consectetur</p>
+                                                                <a class="butn-style1 fill small" href="https://smartshop.websitelayout.net/help-faq.html#"><span>Buy Now</span></a>
+                                                            </div>
+                                                        </div></div><div class="owl-item cloned" style="width: 331.8px;"><div class="offer-banner-slider" style="background-image:url(img/offer-banner/offer-slide-01.jpg);">
+                                                            <div class="offer-text">
+                                                                <h6 class="mb-1 text-white font-weight-500">Men's</h6>
+                                                                <h4 class="font-weight-500"><a href="https://smartshop.websitelayout.net/help-faq.html#">Up to 50% Off</a></h4>
+                                                                <p>Lorem ipsum dolor sit amet consectetur</p>
+                                                                <a class="butn-style1 fill small" href="https://smartshop.websitelayout.net/help-faq.html#"><span>Buy Now</span></a>
+                                                            </div>
+                                                        </div></div><div class="owl-item cloned" style="width: 331.8px;"><div class="offer-banner-slider" style="background-image:url(img/offer-banner/offer-slide-02.jpg);">
+                                                            <div class="offer-text">
+                                                                <h6 class="mb-1 text-white font-weight-500">Women's</h6>
+                                                                <h4 class="font-weight-500"><a href="https://smartshop.websitelayout.net/help-faq.html#" class="text-white">Up to 70% Off</a></h4>
+                                                                <p>Lorem ipsum dolor sit amet consectetur</p>
+                                                                <a class="butn-style1 fill small" href="https://smartshop.websitelayout.net/help-faq.html#"><span>Buy Now</span></a>
+                                                            </div>
+                                                        </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div></div>
+
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub"><span class="submenu-button"></span><a href="https://smartshop.websitelayout.net/help-faq.html#">Blog</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://smartshop.websitelayout.net/blog-grid.html">Blog Grid</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/blog-right-sidebar.html">Blog List Right Sidebar</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/blog-left-sidebar.html">Blog List Left Sidebar</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/blog-full-width.html">Blog Full Width</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/blog-post.html">Blog Post</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub"><span class="submenu-button"></span><a href="https://smartshop.websitelayout.net/help-faq.html#">Shop</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://smartshop.websitelayout.net/shop-categories.html">Shop Categories</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/shop-product-grid.html">Product Grid</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/shop-product-list.html">Product List</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/shop-product-full-three-coulmn.html">Product Three Coulmns</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/shop-product-full-four-coulmn.html">Product Four Coulmns</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/shop-product-detail.html">Product Detail</a></li>
+                                                <li><a href="https://smartshop.websitelayout.net/shop-cart.html">Shop Cart</a></li>
+                                                <li class="has-sub"><span class="submenu-button"></span><a href="https://smartshop.websitelayout.net/shop-checkout-address.html">Shop Checkout</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="https://smartshop.websitelayout.net/shop-checkout-address.html">Address</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/shop-checkout-shipping.html">Shipping</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/shop-checkout-payment.html">Payment</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/shop-checkout-review.html">Review</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/checkout-complete.html">Complete</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub"><span class="submenu-button"></span><a href="https://smartshop.websitelayout.net/help-faq.html#!">Elements</a>
+                                            <ul class="row megamenu sub-menu">
+                                                <li class="col-lg-3 col-sm-12 has-sub"><span class="submenu-button"></span>
+                                                    <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-600 display-30">Elements 01</span>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="https://smartshop.websitelayout.net/accordions.html"><i class="fas fa-sliders-h me-2"></i>Accordions</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/alerts.html"><i class="far fa-bell me-2"></i>Alerts</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/blockquote.html"><i class="fas fa-vector-square me-2"></i>Blockquote</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/buttons.html"><i class="fas fa-link me-2"></i>Buttons</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/call-to-action.html"><i class="far fa-square me-2"></i>Call to Action</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/carousel-slider.html"><i class="far fa-images me-2"></i>Carousel Slider</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 col-sm-12 has-sub"><span class="submenu-button"></span>
+                                                    <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-600 display-30">Elements 02</span>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="https://smartshop.websitelayout.net/countdown.html"><i class="far fa-flag me-2"></i>Count Down</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/counters.html"><i class="fas fa-compress me-2"></i>Counters</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/dropcaps.html"><i class="far fa-closed-captioning me-2"></i>Dropcaps</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/forms.html"><i class="fab fa-wpforms me-2"></i>Forms</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/form-elements.html"><i class="fas fa-cubes me-2"></i>Form Elements</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/font-icons.html"><i class="far fa-check-square me-2"></i>Font Icons</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 col-sm-12 has-sub"><span class="submenu-button"></span>
+                                                    <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-600 display-30">Elements 03</span>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="https://smartshop.websitelayout.net/grid-system.html"><i class="fas fa-th me-2"></i>Grid System</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/highlights.html"><i class="fas fa-highlighter me-2"></i>Highlights</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/icon-with-text.html"><i class="fab fa-fonticons-fi me-2"></i>Icon With Text</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/list-styles.html"><i class="fas fa-list-ul me-2"></i>List Styles</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/media-object.html"><i class="fas fa-photo-video me-2"></i>Media Object</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/modal.html"><i class="fas fa-expand me-2"></i>Modal</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 col-sm-12 has-sub"><span class="submenu-button"></span>
+                                                    <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-600 display-30">Elements 04</span>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="https://smartshop.websitelayout.net/pagination.html"><i class="far fa-caret-square-right me-2"></i>Pagination</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/progress-bars.html"><i class="fas fa-tasks me-2"></i>Progress Bars</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/tables.html"><i class="fas fa-table me-2"></i>Tables</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/tabs.html"><i class="fas fa-sliders-h me-2"></i>Tabs</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/typography.html"><i class="fas fa-text-height me-2"></i>Typography</a></li>
+                                                        <li><a href="https://smartshop.websitelayout.net/responsive-videos.html"><i class="fas fa-video me-2"></i>Videos</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <!-- end menu area -->
+
+                                    <!-- attribute navigation -->
+                                    <div class="attr-nav">
+                                        <ul>
+                                            <li class="dropdown me-3 me-lg-0">
+                                                <a href="https://smartshop.websitelayout.net/help-faq.html#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                                    <i class="ti-bag"></i>
+                                                    <span class="badge bg-primary">3</span>
+                                                </a>
+                                                <ul class="dropdown-menu cart-list">
+                                                    <li>
+                                                        <a href="https://smartshop.websitelayout.net/help-faq.html#" class="photo"><img src="./index_files/cart-thumb-01.jpg" class="cart-thumb" alt="..."></a>
+                                                        <h6><a href="https://smartshop.websitelayout.net/help-faq.html#">Men's Football Boots </a></h6>
+                                                        <p>2x - <span class="price">$30.00</span></p>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://smartshop.websitelayout.net/help-faq.html#" class="photo"><img src="./index_files/cart-thumb-02.jpg" class="cart-thumb" alt="..."></a>
+                                                        <h6><a href="https://smartshop.websitelayout.net/help-faq.html#">Sun Protection Cap</a></h6>
+                                                        <p>1x - <span class="price">$10.20</span></p>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://smartshop.websitelayout.net/help-faq.html#" class="photo"><img src="./index_files/cart-thumb-03.jpg" class="cart-thumb" alt="..."></a>
+                                                        <h6><a href="https://smartshop.websitelayout.net/help-faq.html#">Heel Character Shoes</a></h6>
+                                                        <p>2x - <span class="price">$39.00</span></p>
+                                                    </li>
+                                                    <li class="total bg-primary">
+                                                        <span class="float-start"><strong>Total</strong>: $79.20</span>
+                                                        <a href="https://smartshop.websitelayout.net/shop-cart.html" class="butn-style2 small white float-end w-auto"><span>View Cart</span></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="search"><a href="https://smartshop.websitelayout.net/help-faq.html#"><i class="ti-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- end attribute navigation -->
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+        
+        <!-- CATEGORY MP-MENU
+        ================================================== -->
+        <div id="mp-menu" class="mp-menu mp-cover">
+            <div class="mp-level" data-level="1">
+                <h2>All Categories</h2>
+                <ul>
+                    <li class="mp-has-sub">
+                        <a href="https://smartshop.websitelayout.net/help-faq.html#">Devices</a>
+                        <div class="mp-level" data-level="2">
+                            <h2>Devices</h2>
+                            <a class="mp-back" href="https://smartshop.websitelayout.net/help-faq.html#">back</a>
+                            <ul>
+                                <li class="mp-has-sub">
+                                    <a href="https://smartshop.websitelayout.net/help-faq.html#">Mobiles Phones</a>
+                                    <div class="mp-level" data-level="3">
+                                        <h2>Mobile Phones</h2>
+                                        <a class="mp-back" href="https://smartshop.websitelayout.net/help-faq.html#">back</a>
+                                        <ul>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Apple Mobile</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">OnePlus Mobile</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Lenovo Mobile</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Micromax Mobile</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="mp-has-sub">
+                                    <a href="https://smartshop.websitelayout.net/help-faq.html#">Laptops</a>
+                                    <div class="mp-level" data-level="3">
+                                        <h2>Laptops</h2>
+                                        <a class="mp-back" href="https://smartshop.websitelayout.net/help-faq.html#">back</a>
+                                        <ul>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Thin Laptops</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">2-in-1 Laptops</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Gaming Laptops</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Budget Laptops</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Light Laptops</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="mp-has-sub">
+                                    <a href="https://smartshop.websitelayout.net/help-faq.html#">Televisions</a>
+                                    <div class="mp-level" data-level="3">
+                                        <h2>Televisions</h2>
+                                        <a class="mp-back" href="https://smartshop.websitelayout.net/help-faq.html#">back</a>
+                                        <ul>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Smart TV</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Full HD TV</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Android TV</a></li>
+                                            <li><a href="https://smartshop.websitelayout.net/help-faq.html#">4K TV</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mp-has-sub">
+                        <a href="https://smartshop.websitelayout.net/help-faq.html#">Beauty &amp; Health</a>
+                        <div class="mp-level" data-level="2">
+                            <h2>Beauty &amp; Health</h2>
+                            <a class="mp-back" href="https://smartshop.websitelayout.net/help-faq.html#">back</a>
+                            <ul>
+                                <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Grooming</a></li>
+                                <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Luxury Beauty</a></li>
+                                <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Make-up</a></li>
+                                <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Personal Care</a></li>
+                                <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Nutrition Care</a></li>
+                                <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Health Care</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mp-has-sub">
+                        <a href="https://smartshop.websitelayout.net/help-faq.html#">Store</a>
+                        <div class="mp-level" data-level="2">
+                            <h2>Store</h2>
+                            <a class="mp-back" href="https://smartshop.websitelayout.net/help-faq.html#">back</a>
+                            <ul>
+                                <li class="mp-has-sub">
+                                    <a class="icon icon-t-shirt" href="https://smartshop.websitelayout.net/help-faq.html#">Clothes</a>
+                                    <div class="mp-level" data-level="3">
+                                        <h2 class="icon icon-t-shirt">Clothes</h2>
+                                        <a class="mp-back" href="https://smartshop.websitelayout.net/help-faq.html#">back</a>
+                                        <ul>
+                                            <li>
+                                                <a class="icon icon-female" href="https://smartshop.websitelayout.net/help-faq.html#">Women's Clothing</a>
+                                            </li>
+                                            <li>
+                                                <a class="icon icon-male" href="https://smartshop.websitelayout.net/help-faq.html#">Men's Clothing</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="icon icon-diamond" href="https://smartshop.websitelayout.net/help-faq.html#">Watches</a>
+                                </li>
+                                <li>
+                                    <a class="icon icon-music" href="https://smartshop.websitelayout.net/help-faq.html#">Shoes</a>
+                                </li>
+                                <li>
+                                    <a class="icon icon-food" href="https://smartshop.websitelayout.net/help-faq.html#">Jewellery</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Books &amp; Audible</a></li>
+                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Movies &amp; Games</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="page-title-section bg-img cover-background" data-background="img/bg/page-title.jpg" style="background-image: url(&quot;img/bg/page-title.jpg&quot;);">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1>Help / FAQ</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="https://smartshop.websitelayout.net/home-shop-1.html">Home</a></li>
+                        <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Help / FAQ</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- FAQ
+        ================================================== -->
+        <section class="md">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-6 mb-1-9 mb-lg-0">
+                        <div class="resp-tabs-container hor_1 p-0">
+
+                            <div id="accordion" class="accordion-style">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                        <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">How can i purchase this item ?</button></h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                                        <div class="card-body">
+                                            Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">why unique and creative design ?</button></h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                                        <div class="card-body">
+                                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">are you ready to buy this theme ?</button></h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+                                        <div class="card-body">
+                                           Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingFour">
+                                        <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Do you ship internationally?</button></h5>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
+                                        <div class="card-body">
+                                             Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingFive">
+                                        <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">How do I see previous orders?</button></h5>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-bs-parent="#accordion">
+                                        <div class="card-body">
+                                            Eccaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingSix">
+                                        <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Do you have discounts for returning customers?</button></h5>
+                                    </div>
+                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-bs-parent="#accordion">
+                                        <div class="card-body">
+                                            Cdicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingSeven">
+                                        <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">How can I track my order?</button></h5>
+                                    </div>
+                                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-bs-parent="#accordion">
+                                        <div class="card-body">
+                                           Voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="common-block">
+
+                            <div class="inner-title">
+                                <h3 class="mb-0">How can we help?</h3>
+                                <p class="mb-0">Do not worry. Find the answer to any question.</p>
+                            </div>
+
+                            <form method="post">
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Your Name</label>
+                                            <input type="text" class="form-control" name="name" placeholder="Your name here">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Your Email</label>
+                                            <input type="email" class="form-control" name="email" placeholder="Your email here">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" class="form-control" name="companyname" placeholder="Subject">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Contact Number</label>
+                                            <input type="text" class="form-control" name="phone" placeholder="+40-123 456 789">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-12 mb-4">
+
+                                        <label>Message</label>
+                                        <div class="form-group mb-1">
+                                            <textarea rows="2" class="form-control" placeholder="Tell us a few words"></textarea>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <button type="button" class="butn-style2">Send Message</button>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FOOTER
+        ================================================== -->
+        <footer class="classic-footer bordered">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 mb-2-3 mb-lg-0">
+                        <h3>Contact Us</h3>
+                        <ul class="list-style mb-2 ps-0">
+                            <li>
+                                <strong>Address:</strong><span class="ps-1">74 Guild Street 542B, Town MT.</span>
+                            </li>
+                            <li>
+                                <strong>Phone: </strong><span class="ps-1">(+44) 123 456 789</span>
+                            </li>
+                            <li>
+                                <strong>Email: </strong><span class="ps-1">addyour@emailhere</span>
+                            </li>
+                        </ul>
+
+                        <ul class="list-style-two mb-0 ps-0">
+                            <li>
+                                <a href="https://smartshop.websitelayout.net/help-faq.html#"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://smartshop.websitelayout.net/help-faq.html#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://smartshop.websitelayout.net/help-faq.html#"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://smartshop.websitelayout.net/help-faq.html#"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-2-3 mb-lg-0">
+
+                        <div class="row">
+                            <div class="col-md-6 col-6 pe-lg-0">
+                                <h3>Quick Links</h3>
+                                <ul class="list-style ps-0">
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">News</a></li>
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">History</a></li>
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Our shop</a></li>
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Secure shopping</a></li>
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Privacy policy</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-6 pe-lg-0">
+                                <h3>My Account</h3>
+                                <ul class="list-style ps-0">
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">My Account</a></li>
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Order History</a></li>
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Wish List</a></li>
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Newsletter</a></li>
+                                    <li><a href="https://smartshop.websitelayout.net/help-faq.html#">Returns</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="ps-lg-1-9">
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 mb-1-9">
+                                    <h3>News Letter</h3>
+                                    <form method="post">
+                                        <div class="form-group footer-subscribe">
+                                            <input type="email" placeholder="Subscribe with us" id="email" class="form-control">
+                                            <a href="https://smartshop.websitelayout.net/help-faq.html#" class="butn-style2"><i class="fas fa-paper-plane display-27 mt-1"></i></a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <h3>Download Our Mobile Apps</h3>
+                                    <div class="text-start">
+                                        <a href="https://smartshop.websitelayout.net/help-faq.html#" class="btn bordered text-start ms-1 ms-md-0 mt-1 mt-md-0 mb-0 mb-lg-2 mb-xl-0">
+                                            <span class="media align-items-center">
+                                        <span class="fab fa-apple display-26 pe-3"></span>
+                                            <span class="media-body">
+                                            <span class="d-block display-32">Download on the</span>
+                                            <strong>App Store</strong>
+                                            </span>
+                                            </span>
+                                        </a>
+
+                                        <a href="https://smartshop.websitelayout.net/help-faq.html#" class="btn bordered text-start ms-1 ms-lg-0 ms-xl-1 mt-1 mt-md-0">
+                                            <span class="media align-items-center">
+                                        <span class="fab fa-google-play display-26 pe-3"></span>
+                                            <span class="media-body">
+                                            <span class="d-block display-32">Get it on</span>
+                                            <strong>Google Play</strong>
+                                            </span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="footer-bottom py-1-9 mt-6 mt-lg-8">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <div class="text-center text-md-start">
+                                <p class="mb-0">© <span class="current-year">2023</span> Smartshop is Powered by <a href="https://www.chitrakootweb.com/" target="_blank" class="text-dark">Chitrakoot Web</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-style-17 text-center text-md-end">
+                                <li><img src="./index_files/visa.png" alt="..."></li>
+                                <li><img src="./index_files/mastercard.png" alt="..."></li>
+                                <li><img src="./index_files/paypal.png" alt="..."></li>
+                                <li><img src="./index_files/amex.png" alt="..."></li>
+                                <li><img src="./index_files/discover.png" alt="..."></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        
+    </div>
+    
+    <!-- BUY TEMPLATE
+    ================================================== -->
+    <div class="buy-theme alt-font d-none d-lg-inline-block"><a href="https://wrapbootstrap.com/theme/smartshop-multipurpose-ecommerce-template-WB0N7CT4D" target="_blank"><i class="fas fa-cart-plus"></i><span>Buy Template</span></a></div>
+
+    <div class="all-demo alt-font d-none d-lg-inline-block"><a href="https://www.chitrakootweb.com/contact.html" target="_blank"><i class="far fa-envelope"></i><span>Quick Question?</span></a></div>
+    
+    <!-- SCROLL TO TOP
+    ================================================== -->
+    <a href="https://smartshop.websitelayout.net/help-faq.html#" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+    
+    <!-- all js include start -->
+
+    <!-- jQuery -->
+    <script src="./index_files/jquery.min.js.download"></script>
+
+    <!-- popper js -->
+    <script src="./index_files/popper.min.js.download"></script>
+
+    <!-- bootstrap -->
+    <script src="./index_files/bootstrap.min.js.download"></script>
+
+    <!-- core.min.js -->
+    <script src="./index_files/core.min.js.download"></script>
+
+    <!-- custom scripts -->
+    <script src="./index_files/main.js.download"></script>
+	
+	<!-- all js include end -->
+
+
+
+</body></html>

@@ -1,0 +1,109 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Sighnup</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'login/css/signup.css' %}">
+
+
+</head>
+
+<body style="background-image: url({% static 'login/img/lap.jpg' %});background-size: cover;background-repeat: no-repeat;">
+
+  
+    
+    
+
+  
+
+ <div class="container-fluid">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="login-form  container text-center">
+          {% if otp %}
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="form-outline form-white mb-4  mx-4">
+            <input placeholder="Email" type="email" id="typeEmailX" class="form-control form-control-lg" value="{{usr.email}}"  name="email">
+          </div>
+
+
+          <div class="form-outline form-white mb-4  mx-4">
+            <input placeholder="OTP" type="number" id="typeEmailX" class="form-control form-control-lg"  name="otp">
+          </div>
+
+
+          <button class="btn btn-outline-light btn-lg px-5" type="submit">signup</button>
+
+        </form>
+
+
+
+          {% else %}
+
+
+          <div class="pt-5">
+              <h2 class="fw-bold pt-4">SIGNUP</h2>
+              <p class=" text-white-50  pt-2">Please enter your details!</p>
+              <form method="POST" name="form1" onsubmit="return Signup()">
+                {% csrf_token %}
+
+              <div class="form-outline form-white mb-4  mx-4">
+                <input placeholder="first name" type="Nmae" id="typeEmailX" class="form-control form-control-lg" / name="firstname">
+              </div>
+
+              <div class="form-outline form-white mb-4 mx-4">
+                <input placeholder="Lastname" type="Nmae" id="typeEmailX" class="form-control form-control-lg" / name="lastname">
+              </div>
+              <div class="form-outline form-white mb-4  mx-4">
+                <input placeholder="phone" type="phone" id="typeEmailX" class="form-control form-control-lg" / name="phone">
+              </div>
+              <div class="form-outline form-white mb-4 mx-4">
+                <input placeholder="Password" type="password" id="typePasswordX" class="form-control form-control-lg" / name="Password">
+              </div>
+              <div class="form-outline form-white mb-4 mx-4">
+                <input placeholder="Confirm Password" type="password" id="typePasswordX" class="form-control form-control-lg" / name="Confirm_Password">
+              </div>
+              <button class="btn btn-outline-light btn-lg px-5" type="submit">signup</button>
+              <p class="mt-2 mx-5">Goto login page;<a href="{%url 'log'%}">Login</a></p>
+
+
+            </form>
+
+          </div>
+          {% endif %}
+
+        </div>
+    </div>
+
+ </div>
+
+
+ <script>
+
+  function Signup(){
+    var firstname=document.getElementById('firstname');
+
+    if(firstname.value==""){
+      alert("must have fill this feild");
+      document.form1.firstname.focus();
+      return false;
+
+    }
+  } 
+
+ </script>
+
+
+</body>
+
+</html>
+</html>

@@ -1,0 +1,323 @@
+{% extends 'footer.html' %}
+{% load static %}   
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://unpkg.com/js-image-zoom@0.4.1/js-image-zoom.js" type="application/javascript"></script>
+
+
+
+<!-- <style>
+    .zoom-container {
+        width: 40px; /* Adjust the width to fit your layout */
+        height: 40px; /* Adjust the height to fit your layout */
+        overflow: hidden;
+    }
+
+    .zoomed-image {
+        width: 100%;
+    }
+</style> -->
+
+
+
+
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper mp-pusher" id="mp-pusher">
+
+
+
+
+        
+        <!-- CATEGORY MP-MENU
+        ================================================== -->
+
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">Product Details</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">Best</a></li>
+                        <li><a href="#" style="color: aliceblue;">Purchase Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="md">
+            <div class="container">
+        
+                <!-- product section -->
+                <div class="row mb-6 mb-md-7 mb-lg-9 product_data" style="background-color: rgb(252, 248, 248);">
+                    <div class="col-lg-5 text-center text-lg-start mb-1-9 mb-lg-0 mt-4 ">
+                        
+
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                            <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                        <div class="big-image" id="img-container">
+                            <div class="carousel-inner" id="img-container" style="width: 400px">
+
+                              <div class="carousel-item active" >
+                                <img src="{{product.image.url}}" class="d-block w-100"id="img-container" alt="...">
+                              </div>
+
+
+                              <div class="carousel-item ">
+                                <img src="{{product.image2.url}}" class="d-block w-100 xzoom zoomed-image"id="img-container" alt="...">
+                              </div>
+                              <div class="carousel-item ">
+                                <img src="{{product.image3.url}}" class="d-block w-100 xzoom zoomed-image"id="img-container" alt="...">
+                              </div>
+                            </div>
+                         </div>   
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+
+
+        
+                        <!-- product left start -->
+                        <div class="xzoom-container">
+                            <!-- <img class="xzoom5 mb-1-9" id="xzoom-magnific" src="{{product_details.image.url}}" alt="..." /> -->
+                            <div class="xzoom-thumbs no-margin">
+                                <img class="xzoom-gallery5" width="80" src="{{product.image.url}}" xpreview="img/products/single-product/preview/01_product.jpg" title="The description goes here"></a>
+                                <img class="xzoom-gallery5" width="80" src="{{product.image2.url}}" title="The description goes here"></a>
+                                <img class="xzoom-gallery5" width="80" src="{{product.image3.url}}" title="The description goes here"></a>
+                            </div>
+                        </div>
+                        <!-- product left end -->
+        
+                    </div>
+                    <div class="col-lg-6 ps-lg-2-3 mt-5 ms-5">
+                        <div class="product-detail me-5">
+                            <h2 class="mb-1 pb-4">{{product.product_name}} </h2>
+                            <div class="bg-primary separator-line-horrizontal-full "></div>
+                            <h4 class="rating-text pb-4 mt-3"><span>{{product.category}}</span> <span class="font-500 theme-color"></span></h4>
+                            <h6>{{product.description}}</h6>
+                            <p>{{product.specs}}</p>
+
+        
+                            {% if page == 1 %}
+
+
+                            <div class="mb-4 pb-3">
+                                <span class="display-26 font-weight-700 text-primary ">RS :{{product.price}}</span>
+                            </div>
+                            {% else %}
+                            <div class="mb-4 pb-3">
+                                <span class="display-26 font-weight-700 text-primary ">RS :{{product_details.price}}</span>
+                            </div>
+                            {% endif %}
+
+
+                           
+                            
+                                <div class="pt-3 pb-3 d-flex justify-content-start">
+                                
+                                {% if page == 1 %}
+
+                                
+                                    
+                                    {% for i in  product_details %}
+                                           <a href="{% url 'product_details' product.id i.id %}"><li class="me-3 bt btn-light rounded-pill px-1 " style="text-decoration: none; color: aqua;font-size: 25px; font-weight: bold;list-style: none;">{{i.Vprocessor}}</li></a>
+
+                                
+
+                                        
+
+                                    {% endfor %}
+
+                                  {% else %}
+                                  
+                                    <a href=""><li class="me-3 bt btn-light rounded-pill px-1 " style="text-decoration: none; color: aqua;font-size: 25px; font-weight: bold;list-style: none;">{{product_details.Vprocessor}}</li></a>
+
+                                        
+                                {% endif %}
+                                    
+                                </div>
+
+
+                            
+
+                            
+        
+
+
+        
+                            <div class="row mb-4">
+                                <div class="col-md-3">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{product_details.id}}" class="product_id ">
+
+                                    <div>
+                                        <input type="hidden" name="quantity" class="form-control qty-input text-center" value="1">
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <button class="addToCartBtn butn-style2 me-3 mb-2 mb-md-0">
+
+                                        Add To Cart
+                                            
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/2.2.3/jquery.elevatezoom.js
+"></script> -->
+
+
+<script>
+    var options = {
+        width: 400,
+        zoomWidth: 500,
+        offset: {vertical: 0, horizontal: 10}
+    };
+    new ImageZoom(document.getElementById("img-container"), options);
+    
+    </script>
+
+
+<!-- <script>
+    $(document).ready(function() {
+        $('.xzoom').elevateZoom({
+
+            zoomWidth:200,
+            XOffset:15,
+
+            zoomType: 'inner',
+            cursor: 'crosshair',
+            zoomContainer: $('.zoom-container'), // Specify the zoom container
+            galleryActiveClass: 'active',
+            // responsive: true,
+            scrollZoom: true,
+            easing: true,
+            zoomWindowFadeIn: 50,
+            zoomWindowFadeOut: 50,
+            lensFadeIn: 500,
+            lensFadeOut: 500,
+            containLensZoom: 1,
+
+
+
+        });
+    });
+</script> -->
+<!-- <script src="zoomsl.min.js"></script> -->
+
+
+<script>
+    $(document).ready(function () {
+
+$('.increment-btn').click(function (e) {
+    e.preventDefault();
+
+    var inc_value = $(this).closest('.product_data').find('.qty-input').val();
+    var value = parseInt(inc_value,10);
+    value = isNaN(value) ? 1 : value;
+    if(value < 10)
+    {
+        value++;
+        $(this).closest('.product_data').find('.qty-input').val(value);
+    }
+});
+
+$('.decrement-btn').click(function (e) {
+    e.preventDefault();
+
+    var dec_value = $(this).closest('.product_data').find('.qty-input').val();
+    var value = parseInt(dec_value,10);
+    value = isNaN(value) ? 1 : value;
+    if(value > 1)
+    {
+        value--;
+        $(this).closest('.product_data').find('.qty-input').val(value);
+    }
+});
+
+    $('.addToCartBtn').click(function(e){
+    e.preventDefault();
+    // var product_stock= $(this).closest('.product_data').find('.product_stock').val();
+    var     product_id= $(this).closest('.product_data').find('.product_id').val();
+    var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+    var token = $('input[name=csrfmiddlewaretoken]').val();
+
+    $.ajax({
+        method : "POST",
+        url: "{% url 'Addtocart' %}",
+        data:{
+            'product_id':product_id,
+            'product_qty': product_qty,
+            // 'product_stock':product_stock,
+            csrfmiddlewaretoken: token
+        },
+        success: function (response){
+            console.log(response)
+            alertify.success(response.status)
+
+        }
+
+    });
+    });
+});
+
+</script>
+
+<!-- <script type="text/javascript">
+    $(document).ready(function(){
+        $("{{product.image.url}}").imagezoomsl({
+            zoomrange:[3,3]
+        });
+    });
+    
+</script> -->
+
+<script>
+    $(function(){
+        $(".xzoom,.xzoom-gallery5").xzoom({
+            zoomWidth: 400,
+            tint: "#333",
+            XOffset: 15,
+        });
+    });
+</script>
+        
+
+        
+
+{%endblock%}
+
+
+

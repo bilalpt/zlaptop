@@ -1,0 +1,42 @@
+<script>
+$(document).ready(function() {
+    $(document).on('click', '.delete-cart-item', function(e) {
+      e.preventDefault();
+  
+      
+      var prod_id = $(this).data('prod_id');
+  
+      
+  
+  
+      $.ajax({
+        method: "POST",
+        url: "{% url 'deletecartitem' %}",
+        data: {
+          'prod_id': prod_id,
+          csrfmiddlewaretoken: '{{csrf_token}}'
+        },
+        success: function(response) {
+          console.log('hello');
+  
+          console.log(response);
+  
+          $('.product_data').load(location.href + " .product_data");
+  
+        }
+      });
+    });
+  });
+  </script>
+
+
+
+
+
+
+
+
+<script>
+
+    
+    

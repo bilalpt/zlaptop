@@ -1,0 +1,141 @@
+{% extends 'footer.html' %}
+{% load static %}   
+{% block content %}
+
+
+
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper mp-pusher" id="mp-pusher">
+
+        <!-- HEADER
+        ================================================== -->
+
+                <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">My Profile</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">check</a></li>
+                        <li><a href="#" style="color: aliceblue;"> Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+              <!-- ACCOUNT ORDERS
+        ================================================== -->
+        <section class="md">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <!-- left panel -->
+                    <div class="col-lg-4 col-sm-9 mb-2-3 mb-lg-0">
+
+                        <div class="account-pannel">
+
+                            <div class="p-4">
+
+                                <div class="text-center">
+                                    <div class="pb-3">
+                                        <img class="img-fluid rounded-circle img-thumbnail" src="img/avatar/t-3.jpg" alt="...">
+                                    </div>
+                                    <h6 class="mb-0 display-28">{{user.username}}</h6>
+                                    <small>Joined JUNE 06, 2023</small>
+
+                                </div>
+                            </div>
+
+                            <div class="list-group">
+                                <a class="list-group-items" href="{% url 'order_history' %}"><i class="ti-bag pe-2"></i>Orders</span></a>
+                                <a class="list-group-items" href="{% url 'my_profile' %}"><i class="ti-bag pe-2"></i>Profile<span class="badge badge-pill"></span></a>
+
+
+                                <a class="list-group-items" href="#"><i class="ti-bag pe-2"></i>Edit Profile<span class="badge badge-pill"></span></a>
+
+                                <a class="list-group-items" href="{% url 'shipping_address' %}"><i class="ti-location-pin pe-2"></i>Addresses</a>
+                                <a class="list-group-items" href="account-wishlist.html"><i class="ti-heart pe-2"></i>Wishlist</span></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- end left panel -->
+
+                    <!-- right panel -->
+                    <div class="col-lg-5">
+
+                        <div class="common-block">
+
+                            <div class="inner-title">
+                                <h4 class="mb-0">Edit Details</h4>
+                            </div>
+
+                            <form method="post">
+                                {% csrf_token %}
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Your Name</label>
+                                            <input type="text" class="form-control" name="name" value="{{user.username}}" placeholder="Your name here">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Your User Last Name</label>
+                                            <input type="text" class="form-control" name="lastname" value="{{user.last_name}}" placeholder="Your user last name">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Email Address</label>
+                                            <input type="email" class="form-control" name="email" value="{{user.email}}" placeholder="Your email here">
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+
+                                <button type="submit" class="butn-style2 mt-4">Update Profile</button>
+
+                            </form>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- end right panel -->
+                </div>
+            </div>
+        </section>
+    </div>  
+    
+{% endblock %}    

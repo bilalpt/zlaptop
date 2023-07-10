@@ -1,0 +1,196 @@
+{% extends 'footer.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">Home</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">Best</a></li>
+                        <li><a href="#" style="color: aliceblue;">Purchase Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <!-- Products
+        ================================================== -->
+        <section>
+
+            <div class="baxter product_data" style="background-color: rgb(250, 254, 254);">
+                <h1 class="heading1 text-center">PRODUCTS</h1>
+                <div class=" container text-center ">
+                    {% for i in one %}
+                    <div class="card text-center mx-3 my-2 " style="width: 15rem; display:inline-block; border-radius: 13px;">
+                        <!-- wishlistjquary -->
+                        <input type="hidden" value="{{i.vproduct_id}}" class="product_id">
+                        {% csrf_token %}
+                        <img src="{{i.vproduct.image.url}} " class="card-img-top mt-2 " alt="... ">
+                        <div class="card-body ">
+                            <!-- <h3 class="mb-2 display-29 mt-3 letter-spacing-1 text-uppercase"><a href="{% url 'product_details' i.vproduct.id 0 %}">{{i.vproduct.product_name}}</a></h3> -->
+                            <div class="me-2"><a href="{% url 'product_details' i.vproduct.id 0 %}">{{i.vproduct.description}}</a></div>
+                            <div class="price mt-1 me-4">₹{{i.price}}<a href=""><i class="bi bi-heart ms-5 addtowishlist" ></a></i></div>
+                        </div>
+                    </div>
+        
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+        <!-- category
+        ================================================== -->
+
+        <section class="py-0">
+            <div class="container">
+                <div class="row">
+                    {% for i in key %}
+                    <div class="col-md-6 mt-6">
+                        <div class="bg-img cover-background mx-2 my-2 py-2-3 px-1-6 px-md-1-9" style="background-image:url('{{i.cart_img.url}}'); width: 33rem; height: 15rem;">
+                            <h4 class="mb-1-9 text-white-50">{{i.category_name}}<br><span class="text-primary">{{i.description}}</span></h4>
+                            <a href="#" class="butn-style1 fill"><span>shop now</span></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+        
+        
+
+
+        <!-- OFFERS
+        ================================================== -->
+        <section class="bg-img cover-background background-position-x-25" style="background-image:url('{% static 'img/off.jpg'%}')">
+            <div class="container">
+                <div class="text-center">
+
+                    <div class="text-center mb-2-3 mb-lg-2-7">
+                        <span class="font-weight-600 text-primary display-29">Get <span class="text-danger">70%</span> off to your order</span>
+                        <h3 class="mb-0">Limited Time Offer!</h3>
+                    </div>
+
+                    <ul class="countdown count-style-one text-center p-0 m-0">
+                        <!-- days -->
+                        <li><span class="days">00</span>
+                            <p class="timeRefDays text-center">days</p>
+                        </li>
+                        <!-- end days -->
+                        <!-- hours -->
+                        <li><span class="hours">00</span>
+                            <p class="timeRefHours">hours</p>
+                        </li>
+                        <!-- end hours -->
+                        <!-- minutes -->
+                        <li><span class="minutes">00</span>
+                            <p class="timeRefMinutes">minutes</p>
+                        </li>
+                        <!-- end minutes -->
+                        <!-- seconds -->
+                        <li><span class="seconds">00</span>
+                            <p class="timeRefSeconds">seconds</p>
+                        </li>
+                        <!-- end seconds -->
+                    </ul>
+                    <a href="shop-product-grid.html" class="butn-style1 fill mt-2-3 mt-lg-2-7"><span>Shop Now</span></a>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+                <!-- Products
+        ================================================== -->
+        <section class="py-0">
+            <div class="container">
+                <div class="row">
+                    {% for i in brand %}
+                    <div class="col-md-3 mt-3">
+                        <div class="bg-img cover-background mx-3 my-3 py-2-3 px-1-6 px-md-1-9" style="background-image:url('{{i.brand_img.url}}'); width: 14rem; height: 8rem;">
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+ 
+
+        <!-- CLIENTS
+        ================================================== -->
+        <div class="section-clients bg-light">
+            <div class="container">
+                <div class="owl-carousel owl-theme clients">
+                    <div class="item"><img src="img/partners/client-01.png" alt="..."></div>
+                    <div class="item"><img src="img/partners/client-02.png" alt="..."></div>
+                    <div class="item"><img src="img/partners/client-03.png" alt="..."></div>
+                    <div class="item"><img src="img/partners/client-04.png" alt="..."></div>
+                    <div class="item"><img src="img/partners/client-05.png" alt="..."></div>
+                    <div class="item"><img src="img/partners/client-06.png" alt="..."></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>  
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function() {
+        
+        
+        $('.addtowishlist').click(function(e){
+            e.preventDefault();
+            var     product_id= $(this).closest('.product_data').find('.product_id').val();
+            var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+            var token = $('input[name=csrfmiddlewaretoken]').val();
+        
+            $.ajax({
+                method : "POST",
+                url: "{% url 'addwishlist' %}",
+                data:{
+                    'product_id':product_id,
+                    'product_qty': product_qty,
+                    csrfmiddlewaretoken: token
+                },
+                success: function (response){
+                    console.log(response)
+                    alertify.success(response.status)
+        
+                }
+        
+            });
+            });
+        
+          });
+        
+        
+        
+        </script>
+
+{%endblock%}

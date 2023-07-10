@@ -1,0 +1,65 @@
+
+{%extends 'Adminpanel/common.html'%}
+
+
+{% block content %}
+<div style="margin-left: 900px;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form class="d-flex" method="get" action="{% url 'product_search' %}">
+      <input class="form-control me-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </nav>
+</div>  
+<table class="table caption-top">
+<a href="{% url 'product' %}"><h4> Product Details</h4></a>    
+<thead>
+  {% if one %}
+
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">image</th>
+        <th scope="col">Product name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Brand Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Edit/delete</th>
+
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in one %}
+      <tr>
+        <!-- <th scope="row">1</th> -->
+        <td>{{i.id}}</td>
+        <!-- {% if i.image %} -->
+        <td scope="row"><img src="{{i.image.url}}" width="40px" height="40px" alt=""></td>
+        <!-- {% endif %} -->
+        <td>{{i.product_name}}</td>
+        <td>{{i.description}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.brandname}}</td>
+        <td>{{i.category}}</td>
+        <td><a class="btn btn-primary me-2" href="{% url 'edit' i.id %}" role="button">Edit</a>
+            <a class="btn btn-danger" href="{% url 'deleteproduct' i.id %}" onclick="return confirm('Are You Sure Want to delete'+'{{i.product_name}}')">Delete</a>
+        </td>
+      </tr> 
+      {% endfor %}
+
+  </table>
+  {% else %}
+  <h4>Not fount please try again </h4>
+  {% endif %}
+</form>
+
+
+
+
+
+
+
+{% endblock%}

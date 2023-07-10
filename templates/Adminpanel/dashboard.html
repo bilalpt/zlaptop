@@ -1,0 +1,202 @@
+{% extends 'Adminpanel/common.html'%}
+{% block content %}
+
+{%load static%}
+<section class="section dashboard">
+    <div class="row">
+
+      <!-- Left side columns -->
+      <div class="col-lg-10">
+        <div class="row">
+
+          <!-- Sales Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
+
+              
+
+              <div class="card-body">
+                <h5 class="card-title">Sales 
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-cart"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{sales |floatformat}}<span class="text-muted" style="font-size: 20px;">Products sold</span></h6>
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End Sales Card -->
+
+          <!-- Revenue Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card revenue-card">
+
+              
+
+              <div class="card-body">
+                <h5 class="card-title">Revenue </h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-currency-dollar"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>₹ {{revenue|floatformat:2}}</h6>
+                    <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End Revenue Card -->
+
+          <!-- Customers Card -->
+          <div class="col-xxl-4 col-xl-12">
+
+            <div class="card info-card customers-card">
+
+              
+
+              <div class="card-body">
+                <h5 class="card-title">Customers </h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-people"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{total_users}}</h6>
+                    <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- End Customers Card -->
+
+          <!-- Reports -->
+          <div class="col-12">
+            <div class="card">
+
+              
+
+              <div class="card-body">
+                <h5 class="card-title">Reports </h5>
+
+                <!-- Line Chart -->
+                <div id="reportsChart"></div>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#reportsChart"), {
+                      series: [{
+                        name: 'Sales',
+                        data: [{% for sale in sales_by_day  %}
+                          {{sale.total_sales|floatformat:2}},
+                        {% endfor %}],
+                      }],
+                      chart: {
+                        height: 350,
+                        type: 'area',
+                        toolbar: {
+                          show: false
+                        },
+                      },
+                      markers: {
+                        size: 4
+                      },
+                      colors: ['#4154f1', '#2eca6a'],
+                      fill: {
+                        type: "gradient",
+                        gradient: {
+                          shadeIntensity: 1,
+                          opacityFrom: 0.3,
+                          opacityTo: 0.4,
+                          stops: [0, 90, 100]
+                        }
+                      },
+                      dataLabels: {
+                        enabled: true
+                      },
+                      stroke: {
+                        curve: 'smooth',
+                        width: 3
+                      },
+                      xaxis: {
+                        type: 'datetime',
+                        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z", "2018-09-19T06:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                      },
+                      tooltip: {
+                        x: {
+                          format: 'dd/MM/yy HH:mm'
+                        },
+                      }
+                    }).render();
+                  });
+                </script>
+                <!-- End Line Chart -->
+
+              </div>
+
+            </div>
+          </div><!-- End Reports -->
+
+          <!-- Recent Sales -->
+          <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+              
+
+              <div class="card-body">
+                <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+
+                <table class="table table-borderless ">
+                  <thead class="bg-white">
+                    <tr>
+                      <th scope="col">id</th>
+                      <th scope="col">Customer</th>
+                      <th scope="col">Product</th>
+                      <th scope="col">Qty</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for sale in recent_sales  %}
+                    <tr>
+                      <th scope="row">{{sale.id}}</th>
+                      <td>{{sale.order_id.user.username}}</td>
+                      <td>{{sale.vproduct}}</td>
+                      <td>{{sale.quantity}}</td>
+                      <td>₹ {{sale.order_id.total_amount}}</td>
+                      {% if sale.order_id.STATUS == 'Pending' %}
+                      <td><span style="background-color: #fff2e1 !important; color: #fdac41 !important; border-radius: 0; " class="badge">{{sale.order_id.STATUS}}</span></td>
+                      {% elif sale.order_id.STATUS == 'Out for Shiping' %}
+                      <td><span style="background-color: #dff9ec !important; color: #39da8a !important; border-radius: 0; " class="badge">{{sale.order_id.STATUS}}</span></td>
+                      
+                      {% elif sale.order_id.STATUS == 'Completed' %}
+                      <td><span style="background-color: #dff9ec !important; color: #39da8a !important; border-radius: 0; " class="badge">{{sale.order_id.STATUS}}</span></td>
+                      {% endif %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+              </div>
+
+            </div>
+          </div><!-- End Recent Sales -->
+
+        </div>
+      </div><!-- End Left side columns -->
+
+{% endblock %}

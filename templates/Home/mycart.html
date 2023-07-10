@@ -1,0 +1,335 @@
+{% extends 'footer.html' %}
+{% load static %}   
+
+{% block content%}
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper mp-pusher" id="mp-pusher">
+
+        <!-- HEADER
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">Cart</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">check</a></li>
+                        <li><a href="#" style="color: aliceblue;"> Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!--End HEADER
+        ================================================== -->
+  
+
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card shadow ">
+            <div class="card-body cart_delete">
+              {% if cart %}
+
+              {% for item in cart %}
+              <div class="row product_data ">
+                <div class="col-md-3 my-auto">
+                  <img class="mx-5" src="{{ item.variations.vproduct.image.url }}" height="70px" width="70px" alt="image here">
+                </div>
+
+                <div class="col-md-3 my-auto">
+                  <h6>{{ item.variations.vproduct.product_name }}</h6>
+                </div>
+                <div class="col-md-2 my-auto">
+                  <h6>Rs{{ item.variations.price }}</h6>
+
+                </div>
+                  <div class="col-md-2 my-auto">
+                    <input type="hidden" value="{{item.variations_id}}" class="product_id">
+                      {% csrf_token %}
+
+                      <!-- {% if item.variations.quantity >= item.product_qty %} -->
+                      
+                      <!-- <input type="hidden" value="{{product_details.id}}" class="product_id"> -->
+                      <label for="quantity">Quantity</label>
+                      <div class="input-group text-center mb-3 " style="width: 130px;">
+                          <button class="input-group-text changeQuantity decrement-btn">-</button>
+                          <input type="text" name="quantity" class="form-control qty-input text-center" value="{{item.product_qty}}">
+                          <button class="input-group-text changeQuantity increment-btn">+</button>
+                       </div>
+                       <!-- {% else %}
+                       <h6>Out of Stock</h6>
+                       {% endif %} -->
+
+                      </div>
+
+                  <div class="col-md-2 my-auto">
+                    <a class="btn btn-secondary delete-cart-item" onclick="return confirm('Are You Sure Want to remove')">Remove</a>           
+                  </div>
+
+              </div>
+              {% endfor %}       
+
+              {% else %}
+
+                <h4> your cart is empty </h4>
+
+              {% endif %}     
+
+               
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <div class="card border-secondary mb-5">
+              <div class="card-header  border-0">
+                  <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+              </div>
+              <div class="card-body">
+                  <div class="d-flex justify-content-between mb-3 pt-1">
+                      <h6 class="font-weight-medium">Subtotal</h6>
+                      <h6 class="font-weight-medium sub-tot">RS:{{sub_total}}</h6>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                      <h6 class="font-weight-medium">Shipping</h6>
+                      <h6 class="font-weight-medium">RS:{{shipping}}</h6>
+                  </div>
+              </div>
+              <div class="card-footer border-secondary bg-transparent">
+                  <div class="d-flex justify-content-between mt-2">
+                      <h5 class="font-weight-bold">Total</h5>
+                      <h5 class="font-weight-bold grand-tot" id ="subtotal">{{ grand_total }}</h5>
+                  </div>
+                  <a class="btn btn-block btn-danger my-3 "  href="{% url 'checkout1' %}">Proceed To Checkout</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>  
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+$(document).ready(function () {
+
+$('.increment-btn').click(function (e) {
+  e.preventDefault();
+
+  var inc_value = $(this).closest('.product_data').find('.qty-input').val();
+  var value = parseInt(inc_value,'product_stock');
+  value = isNaN(value) ? 1 : value;
+  if(value < 10)
+  {
+      value++;
+      $(this).closest('.product_data').find('.qty-input').val(value);
+
+      var product_id= $(this).closest('.product_data').find('.product_id').val();
+      var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+      var token = $('input[name=csrfmiddlewaretoken]').val();
+      var grand_tot = $('.grand-tot');
+      var sub_tot = $('.sub-tot');
+      $.ajax({
+        method : "POST",
+        url: "{% url 'updatecart' %}",
+        data:{
+            'product_id':product_id,
+            'product_qty': value,
+            // 'product_stock':product_stock,
+            csrfmiddlewaretoken: token
+        },
+        success: function (response){
+            console.log(response);
+            subtotal = parseInt(response.new_total)
+            console.log(subtotal)
+            alertify.success(response.status);
+            document.getElementById('subtotal').textContent=subtotal;
+            // sub_tot.text(response.new_total);
+            // console.log(response.new_total);
+            $('.grand-tot').load(location.href + ".grand-tot");
+
+
+        }
+
+      });
+
+  }
+});
+
+$('.decrement-btn').click(function (e) {
+  e.preventDefault();
+
+  var dec_value = $(this).closest('.product_data').find('.qty-input').val();
+  var value = parseInt(dec_value,10);
+  value = isNaN(value) ? 1 : value;
+  if(value > 1)
+  {
+      value--;
+      $(this).closest('.product_data').find('.qty-input').val(value);
+
+      var product_id= $(this).closest('.product_data').find('.product_id').val();
+      var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+      var token = $('input[name=csrfmiddlewaretoken]').val();
+      var grand_tot = $('.grand-tot');
+      var sub_tot = $('.sub-tot');
+
+      $.ajax({
+        method : "POST",
+        url: "{% url 'updatecart' %}",
+        data:{
+            'product_id':product_id,
+            'product_qty': value,
+            // 'product_stock':product_stock,
+            csrfmiddlewaretoken: token
+        },
+        success: function (response){
+            console.log(response);
+            subtotal = parseInt(response.new_total)
+            alertify.success(response.status);
+            document.getElementById('subtotal').textContent=subtotal;
+
+        }
+
+      });
+
+  }
+});
+});
+    
+</script>
+
+
+
+
+
+<script>
+        $(document).ready(function() {
+          $(document).on('click', '.delete-cart-item', function(e) {
+            e.preventDefault();
+        
+            var product_id = $(this).closest('.product_data').find('.product_id').val();
+            var token = $('input[name=csrfmiddlewaretoken]').val();
+        
+            $.ajax({
+              method: "POST",
+              url: "{%url 'deletecartitem'%}",
+              data: {
+                'product_id': product_id,
+                'csrfmiddlewaretoken': token
+              },
+              success: function(response) {
+                // console.log(response);
+                alertify.success(response.status)
+                $('.cart_delete').load(location.href + ".cart_delete");
+              },
+              error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alertify.error('An error occurred while deleting the cart item.');
+              }
+            });
+          });
+        });
+</script>
+
+<script>
+$(document).ready(function() {
+
+$('.changeQuantity').click(function (e) {
+  e.preventDefault();
+
+
+
+      var product_id= $(this).closest('.product_data').find('.product_id').val();
+      var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+      var token = $('input[name=csrfmiddlewaretoken]').val();
+
+
+      $.ajax({
+        method : "POST",
+        url: "{% url 'updatecart' %}",
+        data:{
+            'product_id':product_id,
+            'product_qty': product_qty,
+            csrfmiddlewaretoken: token
+        },
+        success: function (response){
+            console.log(response);
+            alertify.success(response.status);
+
+
+        }
+
+      });
+
+  
+});
+});
+    
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+$('.addToCartBtn').click(function(e){
+    e.preventDefault();
+    // var product_stock= $(this).closest('.product_data').find('.product_stock').val();
+    var     product_id= $(this).closest('.product_data').find('.product_id').val();
+    var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+    var token = $('input[name=csrfmiddlewaretoken]').val();
+
+    $.ajax({
+        method : "POST",
+        url: "{% url 'Addtocart' %}",
+        data:{
+            'product_id':product_id,
+            'product_qty': product_qty,
+            // 'product_stock':product_stock,
+            csrfmiddlewaretoken: token
+        },
+        success: function (response){
+            console.log(response)
+            alertify.success(response.status)
+
+        }
+
+    });
+    });
+
+  });
+
+
+
+</script>
+
+
+
+
+
+  <!--================End Cart Area =================-->
+
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- metas -->
+    <meta charset="utf-8">
+    <meta name="author" content="Chitrakoot Web" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="Multipurpose eCommerce Template + Admin" />
+    <meta name="description" content="Smartshop - Multipurpose eCommerce Template + Admin" />
+
+    <!-- title  -->
+    <title>Smartshop - Multipurpose eCommerce Template + Admin</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'img/logos/favicon.png'}">
+    <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png">
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+
+    <!-- theme core css -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper mp-pusher" id="mp-pusher">
+
+        <!-- HEADER
+        ================================================== -->
+        <header class="fixed header-light-nav">
+
+
+             <div class="navbar-default">
+
+
+                <div class="container-fluid p-0">
+                    <div class="row align-items-center g-0">
+                        <div class="col-12 col-lg-12">
+                            <div class="menu_area alt-font">
+                                <nav class="navbar navbar-expand-lg navbar-light p-0">
+
+                                    <!-- category toggler -->
+                                    <a href="#" id="trigger" class="menu-trigger"><i class="ti-menu"></i></a>
+                                    <!-- end category toggler -->
+
+                                    <div class="navbar-header navbar-header-custom">
+                                        <!-- logo -->
+                                        <!-- <a href="index.html" class="navbar-brand logodefault"><img id="logo" src="img/logos/logo1.jpg" alt="logo"></a> -->
+                                        <a href="" class="navbar-brand logodefault"><img id="logo" src="{% static 'img/logo1.jpg'%}" alt="logo"></a>
+
+                                        <!-- end logo -->
+                                    </div>
+                                    <div>
+                                        <div class="b px-3 py-3">
+                                            <a href="{%url 'logout'%}"> <button class="btn btn-outline-light btn-lg px-5 ">LOGOUT</button> </a>
+                                            </div>
+                                    </div>
+
+
+
+                                    <!-- menu area -->
+                                    <ul class="navbar-nav mx-auto" id="nav" style="display: none;">
+
+                                        <li><a href="#">Home</a></li>
+
+
+ 
+                                    </ul>
+                                    <!-- end menu area -->
+
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+        
+        <!-- CATEGORY MP-MENU
+        ================================================== -->
+
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="cover-img" style="background-image: url({%static 'img/index1.jpg'%});background-repeat: no-repeat;background-size:cover;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;">LAPTOPS</h1></div>
+                <div class="breadcrumbs-info">
+                    <ul class="ps-0">
+                        <li><a href="#" style="color: aliceblue;">Best</a></li>
+                        <li><a href="#" style="color: aliceblue;">Purchase Now</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        {% block content %}{%endblock%}
+
+
+        
+
+        
+    </div>
+    
+
+    
+
+
+</body>
+
+</html>

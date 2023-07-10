@@ -1,0 +1,55 @@
+{% extends 'Adminpanel/common.html' %}
+{% block content %}
+<div style="margin-left: 900px;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form class="d-flex" method="get" action="{% url 'search_customers' %}">
+      <input class="form-control me-2" name="custom" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </nav>
+</div>
+{% if customers %}
+<table class="table caption-top">
+    <h3>Customer Details</h3>
+    <thead>
+      <tr>
+        <!-- <th scope="col">id</th> -->
+        <th scope="col">id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Status</th>
+        <th scope="col">Block&Unblock</th>
+
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in customers %}
+      <tr>
+        <!-- <th scope="row">1</th> -->
+        <td>{{i.id}}</td>
+        <td>{{i.username}}</td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.email}}</td>
+        {% if i.is_active %}
+        <td>Active</td>
+        {% else %}
+        <td>Blocked</td>
+        {% endif %}
+        {% if i.is_active %}
+        <td><a class="btn btn-primary me-2" href="{% url 'customer_block' i.id %}" role="button">Active</a>
+        {% else %}
+        <td><a class="btn btn-warning me-2" href="{% url 'customer_block' i.id %}" role="button">Blocked</a>
+        {% endif %} 
+
+        
+      </tr>
+      {% endfor %}
+      {% else %}
+      <h4> Not valid Please enter valid Name</h4>
+      {% endif %}
+  </table>
+{% endblock %}
