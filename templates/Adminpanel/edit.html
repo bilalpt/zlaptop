@@ -41,33 +41,40 @@
                     <label for="" class="form-label">price</label>
                     <input type="text" name="price" id=""value="{{product.price}}" class="form-control bg-transparent">
                 </div>
-                <img src="{{product.image.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
+                
+                {% if product.image %}
+                    <img src="{{product.image.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
+                    {% endif %}
                 <div class="mb-2">
                    
                     <label for="" class="form-label">image</label>
                     <input type="file" name="image" accept="image/png, image/jpeg" id="" class="form-control bg-transparent ">
                 </div>
+                {% if product.image1 %}
                 <img src="{{product.image1.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
-
+                {% endif %}
                 <div class="mb-2">
                     <label for="" class="form-label">image1</label>
                     <input type="file" name="image1" accept="image/png, image/jpeg" id="" class="form-control bg-transparent ">
                 </div>
+                {% if product.image2 %}
                 <img src="{{product.image2.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
-
+                {% endif %}
                 <div class="mb-2">
                     <label for="" class="form-label">image2</label>
                     <input type="file" name="image2" accept="image/png, image/jpeg" id="" class="form-control bg-transparent ">
                 </div>
-                <img src="{{product.image3.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
+                {% if product.image3 %}
 
+                <img src="{{product.image3.url}}" alt="" style="margin-right: 300px; width: 80px; margin-top: 20px;">
+                {% endif %}
                 <div class="mb-2">
                     <label for="" class="form-label">image3</label>
                     <input type="file" name="image3" accept="image/png, image/jpeg" id="" class="form-control bg-transparent ">
                 </div>
 
                 <div class="mb-2">
-                    <label for="" class="form-label">Spacifications</label>
+                    <label for="" class="form-label">Specifications</label>
                     <input type="text" name="specs" id="" value="{{product.specs}}" class="form-control bg-transparent">
                 </div>
 
@@ -80,6 +87,16 @@
                       {% endfor %}
                   </select>
 
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label  for="selectOption2">Offers:</label> 
+                    <select class="form-control" id="selectOption2" name="offers">
+                      <option value="">Choose..</option>
+                      {% for offer in offers  %}
+                      <option value="{{offer.id}}">{{offer.name}}</option>
+                      {% endfor %}
+                    </select>
                 </div>
                 <div class="d-grid">
                     <button class="btn btn-success btn-lg"  type="submit" onsubmit="return submint('File Uploaded')">Update</button>

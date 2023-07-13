@@ -167,7 +167,7 @@
                       <th scope="col">Product</th>
                       <th scope="col">Qty</th>
                       <th scope="col">Price</th>
-                      <th scope="col">Status</th>
+                      <!-- <th scope="col">Status</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -178,13 +178,13 @@
                       <td>{{sale.vproduct}}</td>
                       <td>{{sale.quantity}}</td>
                       <td>₹ {{sale.order_id.total_amount}}</td>
-                      {% if sale.order_id.STATUS == 'Pending' %}
-                      <td><span style="background-color: #fff2e1 !important; color: #fdac41 !important; border-radius: 0; " class="badge">{{sale.order_id.STATUS}}</span></td>
-                      {% elif sale.order_id.STATUS == 'Out for Shiping' %}
-                      <td><span style="background-color: #dff9ec !important; color: #39da8a !important; border-radius: 0; " class="badge">{{sale.order_id.STATUS}}</span></td>
+                      {% if sale.STATUS == 'Pending' %}
+                      <td><span style="background-color: #fff2e1 !important; color: #fdac41 !important; border-radius: 0; " class="badge">{{sale.STATUS}}</span></td>
+                      {% elif sale.STATUS == 'Out for Shiping' %}
+                      <td><span style="background-color: #dff9ec !important; color: #39da8a !important; border-radius: 0; " class="badge">{{sale.STATUS}}</span></td>
                       
-                      {% elif sale.order_id.STATUS == 'Completed' %}
-                      <td><span style="background-color: #dff9ec !important; color: #39da8a !important; border-radius: 0; " class="badge">{{sale.order_id.STATUS}}</span></td>
+                      {% elif sale.STATUS == 'Delivered' %}
+                      <td><span style="background-color: #dff9ec !important; color: #39da8a !important; border-radius: 0; " class="badge">{{sale.STATUS}}</span></td>
                       {% endif %}
                     </tr>
                     {% endfor %}

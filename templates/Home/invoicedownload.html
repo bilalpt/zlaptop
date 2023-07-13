@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{margin-top:20px;
+background-color:#eee;
+}
+
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 1rem;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+
+<div class="container">
+<div class="row">
+
+        <div class="col-lg-12" id='invoice'>
+            <div class="card" >
+                {% for item in order %}
+                <div class="card-body">
+                    <div class="invoice-title" style="margin-left: 100px;">
+                        <h4 class="float-end font-size-15">Invoice #DS0204 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4>
+                        <div class="mb-4">
+                           <h2 class="mb-1 text-muted">Z-laptop</h2>
+                        </div>
+                        <div class="text-muted">
+                            <p class="mb-1">3184 Mankave,kerala calicut</p>
+                            <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> zlaptops@gmail.com</p>
+                            <p><i class="uil uil-phone me-1"></i> 6282796425</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+
+                    <div class="row">
+                        <div class="col-sm-6" style="margin-left: 100px;">
+                            <div class="text-muted">
+                                <h5 class="font-size-16 mb-3">Billed To:</h5>
+                                <h5 class="font-size-15 mb-2">{{ item.order_id.address.name }}</h5>
+                                <p class="mb-1">{{ item.order_id.address.locality }}{{ item.order_id.address.address }}{{ item.order_id.address.landmark }}{{ item.order_id.address.city }}{{ item.order_id.address.state }}{{ item.order_id.address.pincode }}</p>
+                                <p class="mb-1">PrestonMiller@armyspy.com</p>
+                                <p>{{ item.order_id.address.phone }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end row -->
+
+                    <div class="py-2" style="margin-left: 100px; margin-top: 50px;">
+                        <h5 class="font-size-15">Order Summary</h5>
+
+                        <div class="table-responsive">
+                            <table class="table align-middle table-nowrap table-centered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 70px;">No.</th>
+                                        <th style="width: 70px;">Item</th>
+                                        <th style="width: 70px;">Quantity</th>
+                                        <th style="width: 70px;">Mode of payment</th>
+                                        <th style="width: 70px;">Total</th>
+
+
+                                    </tr>
+                                </thead><!-- end thead -->
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">{{ item.order_id.id }}</th>
+                                        <td>
+                                            <div>
+                                                <!-- <h5 class="text-truncate font-size-14 mb-1">Black Strap A012</h5> -->
+                                                <p class="text-muted mb-0">{{ item.vproduct.vproduct.product_name}}</p>
+                                            </div>
+                                        </td>
+                                        <td>{{ item.quantity}}</td>
+                                        <td>{{ item.order_id.mode_of_payment }}</td>
+                                        <td>{{ item.order_id.total_amount }}</td>
+
+
+                                    </tr>
+                                    <!-- end tr -->
+                                    
+                                    <!-- end tr -->
+                                </tbody><!-- end tbody -->
+                            </table><!-- end table -->
+                        </div><!-- end table responsive -->
+                        <div class="d-print-none mt-4">
+                            <div class="float-end" style="margin-top: 30px;">
+                                <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
+                                <a href="#" class="btn btn-primary w-md">Send</a>
+                                <button id="download" >Download</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div><!-- end col -->
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("invoice");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'Report.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+</body>
+</html>

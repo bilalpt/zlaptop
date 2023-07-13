@@ -33,6 +33,7 @@
         <!-- left pannel section -->
 
         <section class="sm">
+            <form action="{%url 'checkout1'%}" method="POST">
             <div class="container" style="background-color: rgba(255, 255, 255, 0.753);">
                 <div class="row">
                     <div class="col-7">
@@ -132,6 +133,7 @@
                             <div>
                                 <label>
                                     <input type="hidden" name="Cash on delivery" value="Cash on delivery" id="showSummaryYes" class="mt-4">
+                                    <input type="number" name="new_totaal" id="new_price" hidden >
                                     
                                 </label>
                             </div>
@@ -142,6 +144,7 @@
                             </label>
                             <!-- <button class="btn btn-success btn-lg"  type="submit" style="margin-left: 50px; margin-top: 30px;">Place order</button> -->
                             <button class="btn btn-success btn-lg"  type="submit" name="COD" style="margin-left: 65px; margin-top: 30px;">COD | Place order</button>
+                        </form>
                             <button class="btn btn-primary btn-lg payWithRazorpay" name="razorpay"  type="submit" style="margin-left: 70px; margin-top: 20px;">Pay with Razorpay</button>
 
                                                          

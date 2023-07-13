@@ -40,7 +40,15 @@
                         <div class="card-body ">
                             <!-- <h3 class="mb-2 display-29 mt-3 letter-spacing-1 text-uppercase"><a href="{% url 'product_details' i.vproduct.id 0 %}">{{i.vproduct.product_name}}</a></h3> -->
                             <div class="me-2"><a href="{% url 'product_details' i.vproduct.id 0 %}">{{i.vproduct.description}}</a></div>
-                            <div class="price mt-1 me-4">₹{{i.price}}<a href=""><i class="bi bi-heart ms-5 addtowishlist" ></a></i></div>
+                            <div class="price mt-1 me-4">
+                            {% if i.vproduct.offers %}
+                            <span style="color: green;">₹{{i.offer_price}}</span>
+                            <del>₹{{i.price}}</del> 
+                            {% else %}
+                           <span style="color: blue;"> ₹{{i.price}}</span>
+                                
+                            {% endif %}
+                                <a href=""><i class="bi bi-heart ms-5 addtowishlist" ></a></i></div>
                         </div>
                     </div>
         

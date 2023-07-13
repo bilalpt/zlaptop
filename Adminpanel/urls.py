@@ -48,7 +48,15 @@ urlpatterns = [
     #varient
     path('varieant',views.varieant,name='varieant'),
     path('deletevarient<int:id>',views.deletevarient,name='deletevarient'),
-    path('editvarieant<int:id>',views.editvarieant,name='editvarieant')
+    path('editvarieant<int:id>',views.editvarieant,name='editvarieant'),
+
+    #invoice
+    path('salesinvoice',views.salesinvoice,name='salesinvoice'),
+
+    path('offers_list',views.offers_list,name='offers_list'),
+
+    path('add_offer',views.add_offer,name='add_offer'),
+
 
 
 

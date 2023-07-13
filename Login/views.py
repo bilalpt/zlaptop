@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login ,logout as dj_logout
 from .mixins import send_otp,verify_otp
 from Login.models import Phone
+from django.contrib.auth.password_validation import validate_password
 
 # verification email
 from .models import UserOTP
@@ -196,6 +197,86 @@ def mobileotp(request):
 
 
     return render(request,'Login/mobile_otp.html')
+
+
+
+#  Forgot Pass
+def forgot_password(request):
+
+    if request.method=='POST':
+        new_password = request.POST.get('new_pass1')
+        n_password = request.POST.get('new_pass2')
+        if new_password:
+            user_email =request.POST.get('email')
+            userrr = User.objects.get(email=user_email)
+            UserOTP.objects.filter(user=userrr).delete()
+            
+            
+            if new_password != n_password:
+                messages.success(request,"Password Missmatch, Enter again..")
+                return render(request,'Login/forgot_password.html',{'otp':False,'usr':userrr, 'reset': True})
+            else:
+                try:
+                    validate_password(new_password)
+                except ValidationError as e:
+                # Handle the validation error
+                    error_message = ', '.join(e.messages)
+                    messages.error(request, error_message)
+                    return render(request,'Login/forgot_password.html',{'otp':False,'usr':userrr, 'reset': True})
+                
+                userrr.set_password(new_password)
+                userrr.save()
+                messages.success(request,"Password Updated Successfully, please login now..!")
+                return redirect('log')
+            
+            
+        get_otp = request.POST.get('otp')
+        if get_otp:
+           get_email =request.POST.get('email')
+           userr = User.objects.get(email=get_email)
+           
+           
+           if int(get_otp) == UserOTP.objects.filter(user=userr).last().otp:
+               
+               messages.success(request,"OTP Verified..! Now reset your Password")
+               return render(request,'Login/forgot_password.html',{'otp':False,'usr':userr, 'reset': True})
+           else:
+               messages.success(request,"You entered a wrong OTP, please try again..!!")
+               return render(request,'Login/forgot_password.html',{'otp':True,'usr':userr})
+           
+           
+        else:   
+            email = request.POST.get('email')
+            if email:
+                email.strip()
+                try:
+                    uuser = User.objects.get(email=email)
+                except:
+                    uuser = None    
+                if uuser:
+                    user_otp=random.randint(100000,999999)
+                    UserOTP.objects.create(user=uuser, otp=user_otp)
+                    mess=f'Hello\t{uuser.first_name},\nOTP to verify your account for Z-Laptop is {user_otp}\nThank You..!!'
+                    send_mail(
+                            "Welcome to Z-Laptop, Verify your Email",
+                            mess,
+                            settings.EMAIL_HOST_USER,
+                            [uuser.email],
+                            fail_silently=False
+                        )
+                    return render(request,'Login/forgot_password.html',{'otp':True,'usr':uuser})
+                else:
+                    messages.success(request,"You are not registered yet, please signup..!!")    
+                    return render(request,'Login/forgot_password.html')
+            
+                    
+                    
+            else:
+                messages.success(request,"Please enter your Email ID to send OTP")    
+                return render(request,'Login/forgot_password.html')
+        
+        
+    return render(request,'Login/forgot_password.html')
 
 
 

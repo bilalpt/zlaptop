@@ -81,16 +81,13 @@
                            <!-- category toggler -->
                            <a href="#"  class="menu-trigger"><i ></i></a>
                            <!-- end category toggler -->
-                           <div class="navbar-header navbar-header-custom">
+                            <div class="navbar-header navbar-header-custom">
                                <!-- logo -->
                                <a href="{% url 'home' %}" class="navbar-brand logodefault"><img id="logo" src="{% static 'img/logo1.jpg'%}" alt="logo"></a>
                                <!-- end logo -->
-                           </div>
-                           <div>
-                               <div class="b px-3 py-3">
-                                   <a href="{%url 'logout'%}"> <button class="btn btn-outline-light btn-lg px-5 ">LOGOUT</button> </a>
-                                   </div>
-                           </div>
+                                 </div>
+                           <div class="navbar-toggler"></div>
+
                            <!-- menu area -->
                            <ul class="navbar-nav mx-auto" id="nav" >
                                <li><a href="{% url 'home' %}">Home</a></li>
@@ -98,7 +95,9 @@
                                <li><a href="{% url 'productAAHL' %}">Products</a></li>
                                <li><a href="{% url 'wishlist' %}">My wishlist</a></li>
                                <li><a href="{%url 'logout'%}">Logout</a></li>
+
                             </ul>
+                            
                            <!-- end menu area -->
                            <div style="padding-right: 130px;font-size: 20px;padding-bottom: 25px;">
                             <a href="{% url 'my_profile' %}"><i class="bi bi-person text-dark"></i>  </a>                         
@@ -107,6 +106,7 @@
                             <a href="{% url 'wishlist' %}" class=" text-dark"><i class="bi bi-heart"></i></a>
 
                         </div>
+                        
                        </nav>
                    </div>
                </div>
@@ -114,6 +114,8 @@
        </div>
 
    </div>
+
+ 
 
 </header>
             <!-- Start Messages Area -->

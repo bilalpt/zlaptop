@@ -14,8 +14,17 @@ class brand(models.Model):
 
     def __str__(self):
         return self.brand_name
-        
 
+ # Offer Model
+class Offers(models.Model):
+    name=models.CharField(max_length=50, null=True)
+    discount=models.IntegerField(blank=False)
+    start_date = models.DateField()
+    end_date=models.DateField()
+    
+    def _str_(self):
+        return self.name
+    
 
 class Product(models.Model):
     product_name   = models.CharField(max_length=200)
@@ -33,6 +42,7 @@ class Product(models.Model):
     create_date    = models.DateTimeField(auto_now_add=True)
     modified_date  = models.DateTimeField(auto_now_add=True)
     specs          = models.CharField(max_length=255,null=True)
+    offers         = models.ForeignKey(Offers, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.product_name
@@ -57,11 +67,21 @@ class Variations(models.Model):
     Vprocessor = models.ForeignKey(Processor,on_delete=models.CASCADE,blank=True,null=True)
     quantity   = models.IntegerField(null=True)
     price      = models.IntegerField(null=True)
-
+    discounted_price = models.BigIntegerField(blank=True, null=True)
 
 
     def __str__(self):
         return f"{self.vproduct.product_name} - {self.Vprocessor.processor_list}"
+    
+    def offer_price(self):
+        offer = self.vproduct.offers
+        if offer:
+            discount_percentage = offer.discount
+            new_price = self.price - (self.price * discount_percentage / 100)
+            self.discounted_price = new_price
+            self.save()
+            return self.discounted_price
+
 
 
 

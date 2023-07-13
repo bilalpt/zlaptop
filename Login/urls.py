@@ -8,6 +8,8 @@ urlpatterns = [
     path('logout',views.logout,name='logout'),
     path('mobileregister',views.mobileregister,name='mobileregister'),
     path('mobileotp',views.mobileotp,name='mobileotp'),
+    # Forgot Pass
+    path('forgot_password',views.forgot_password,name='forgot_password'),
 
 
 ]

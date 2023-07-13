@@ -34,12 +34,15 @@
          <span>Address :    </span><span class="font-weight-bold">{{ item.order_id.address.name }}{{ item.order_id.address.phone }}</span></span><br>
          <span></span><span class="font-weight-bold">{{ item.order_id.address.locality }}{{ item.order_id.address.address }}{{ item.order_id.address.landmark }}{{ item.order_id.address.city }}{{ item.order_id.address.state }}{{ item.order_id.address.pincode }}</span></span><br>
 
-         <!-- <span class="pt-3 d-flex justify-content-end">
-             <a href="/invoiceDownload/<%= orders._id %> " class="btn btn-outline-primary-2">Invoice Downlode</a>
-         </span> -->
+         <span class="pt-3 d-flex justify-content-end">
+             <a href="{% url 'invoicedownload' item.id %} " class="btn btn-outline-primary-2 " id="download">Invoice Downlode</a>
+         </span>
       </div>
  </div>
     {% endfor %}
+
+
+
     
 
 

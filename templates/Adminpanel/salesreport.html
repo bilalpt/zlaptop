@@ -27,8 +27,11 @@
                     </form>
                     </div>
 
+                <div id="invoice">
+
                     {% if sales %}
-                    <table id="example" class="display nowrap mt-5" style="width:100%">
+                    <table id="example" class="display nowrap mt-5" style="width:100%" >
+                 
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -38,7 +41,7 @@
                             <th>Price</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody  >
                         {% for sale in sales  %}
                         <tr class="mb-5">
                             <td>{{sale.order_id.id}}</td>
@@ -49,12 +52,18 @@
                                 {{sale.order_id.total_amount |floatformat:2}}
                             </td>
                         </tr>
+
                         {% endfor %}
+
+                        <button id="download" >Download</button>
+
+
                     </tbody>
                     <tfoot>
         
                     </tfoot>
                 </table>
+                </div>
                 {% endif %}
 
 
@@ -76,5 +85,28 @@
 
             </div>
             </div><!-- End Recent Sales -->
+
+            <!-- pdf -->
+            <script>
+                window.onload = function () {
+                document.getElementById("download")
+                    .addEventListener("click", () => {
+                        const invoice = this.document.getElementById("invoice");
+                        console.log(invoice);
+                        console.log(window);
+                        var opt = {
+                            margin: 1,
+                            filename: 'Report.pdf',
+                            image: { type: 'jpeg', quality: 0.98 },
+                            html2canvas: { scale: 2 },
+                            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                        };
+                        html2pdf().from(invoice).set(opt).save();
+                    })
+            }
+            </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
 
 {% endblock %}

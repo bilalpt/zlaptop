@@ -24,6 +24,7 @@
         <th scope="col">Price</th>
         <th scope="col">Brand Name</th>
         <th scope="col">Category</th>
+        <th scope="col">Offers</th>
         <th scope="col">Edit/delete</th>
 
 
@@ -44,9 +45,11 @@
         <td>{{i.price}}</td>
         <td>{{i.brandname}}</td>
         <td>{{i.category}}</td>
+        <td>{{i.offers.name}}</td>
         <td><a class="btn btn-primary me-2" href="{% url 'edit' i.id %}" role="button">Edit</a>
             <a class="btn btn-danger" href="{% url 'deleteproduct' i.id %}" onclick="return confirm('Are You Sure Want to delete'+'{{i.product_name}}')">Delete</a>
         </td>
+
       </tr> 
       {% endfor %}
 

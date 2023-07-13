@@ -1,0 +1,164 @@
+{% extends 'Adminpanel/common.html' %}
+
+{% block content %}
+<div style="margin-top: 50px; margin-right: 800px;">
+    <a class="btn btn-secondary" href="" data-bs-toggle="modal"
+          data-bs-target="#productModal1">--Add New Offer--</a>
+
+          
+</div>
+
+<div style="margin-left: 900px;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form class="d-flex" action="" method="get">
+      <input class="form-control me-2" name="brand_search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </nav>
+</div>
+
+<table class="table caption-top mt-2">
+  <a href="{% url 'offers_list' %}"><h4>List Of Offers</h4></a>
+
+    <thead>
+
+      <tr>
+        <!-- <th scope="col">id</th> -->
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Discount Percentage</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for offer in offers %}
+      <tr>
+        <!-- <th scope="row">1</th> -->
+        <td>{{offer.id}}</td>
+        <td>{{offer.name}}</td>
+        <td>{{offer.discount}}</td>
+        <td>{{offer.start_date}}</td>
+        <td>{{offer.end_date}}</td>
+        <td><a class="btn btn-secondary" href="" data-bs-toggle="modal"
+            data-bs-target="#productModal2{{forloop.counter}}">Edit</a></td>
+  
+                    
+                 <div>      
+                <!-- Modal Start -->
+                    <div class="modal fade" id="productModal2{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="productModalLabel">Edit Offer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+            
+                                <div class="modal-body">
+                                    <form  method ="post" action="{% url 'offers_list'  %}" enctype="multipart/form-data">
+                                      {% csrf_token %}
+            
+                                      
+                                      <div class="form-group">
+                                        <input  type="text" name="offer_id" value="{{offer.id}}" hidden >
+                                        <label for="dreamweaver" class="ml-2 mt-2" >Offer Name</label>
+                                        <input class="mx-3 form-control" type="text" name="name" value="{{offer.name}}" required >
+                                        
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="dreamweaver" class="ml-2 mt-2" >Discount </label>
+                                        <input class="mx-3 form-control" type="number" name="discount" value="{{offer.discount}}" required>
+                                        
+                                      </div>
+            
+                                      <div class="form-group">
+                                        <label for="dreamweaver" class="ml-2 mt-2" >Start Date: {{offer.start_date}}</label>
+                                        <input class="mx-3 form-control" type="Date" name="start_date" value="{{offer.start_date}}" required >
+                                       
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="dreamweaver" class="ml-2 mt-2" >End Date: {{offer.end_date}}</label>
+                                        <input class="mx-3 form-control" type="Date" name="end_date" value="{{offer.end_date}}" required >
+                                       
+                                      </div>
+                                  
+                                </div>
+                               
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                              </form>
+                            </div>
+                  <!-- Modal End -->
+                </div>
+          
+      </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+  
+
+
+  <div>
+  <!-- Add Offer Modal Start-->
+  
+<div class="modal fade" id="productModal1{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-3" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">Add Offer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form  method ="post" action="{% url 'add_offer'  %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+
+                  
+                  <div class="form-group">
+                   
+                    <label for="dreamweaver" class="ml-2 mt-2" >Offer Name</label>
+                    <input class="mx-3 form-control" type="text" name="name" value="" required >
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="dreamweaver" class="ml-2 mt-2" >Discount </label>
+                    <input class="mx-3 form-control" type="number" name="discount" value="" required >
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label for="dreamweaver" class="ml-2 mt-2" >Start Date</label>
+                    <input class="mx-3 form-control" type="Date" name="start_date" value="" required >
+                   
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="dreamweaver" class="ml-2 mt-2" >End Date</label>
+                    <input class="mx-3 form-control" type="Date" name="end_date" value="" required >
+                   
+                  </div>
+              
+            </div>
+           
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+
+<!-- Add Offer Modal End -->
+</div>
+    
+{% endblock content %}
+    

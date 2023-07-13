@@ -59,6 +59,44 @@
 
                                 <a class="list-group-items"  style="color:  rgb(17, 91, 93);" href="{% url 'shipping_address'%}"><i class="ti-location-pin pe-2"></i>Addresses</a>
                                 <a class="list-group-items" style="color:  rgb(17, 91, 93);" href="account-wishlist.html"><i class="ti-heart pe-2"></i>Wishlist</span></a>
+                                <a style="color: rgb(193, 91, 91); text-decoration: none;"  data-bs-toggle="modal" data-bs-target="#reset_password_modal">Change Password</a>
+                                    <!-- /////////////////Reset Password Modal Body Start/////////////////////// -->
+
+<div class="modal fade mt-5" id="reset_password_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Password</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'reset_password' %}"  method="POST" autocomplete="off" >
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="curr_pass" class="form-label">Current Password:</label>
+                        <input type="text" class="form-control" name="curr_pass" autocomplete="off" >
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="new_pass" class="form-label">New Password:</label>
+                        <input type="password" class="form-control" name="new_pass" autocomplete="off" >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="new_pass2" class="form-label">Confirm Password:</label>
+                        <input type="text" class="form-control" name="new_pass2" autocomplete="off" >
+                    </div>
+                    
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <!-- //////////////////Reset Password Modal Body End////////////////////// -->
                             </div>
 
                         </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from Adminpanel.models import Product,brand,Variations,Processor,Ordered_Product,Order
+from Adminpanel.models import Product,brand,Variations,Processor,Ordered_Product,Order, Offers
 from categories.models import category
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -88,6 +88,7 @@ def edit(request,id):
         image2=request.FILES.get('image2')
         image3=request.FILES.get('image3')
         specs=request.POST.get('specs')
+        offer_id = request.POST.get('offers')
         categor=request.POST.get('category')
 
 
@@ -108,21 +109,32 @@ def edit(request,id):
             messages.error(request,'Please enter valuable amount')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
 
+        if offer_id:
+            offer= Offers.objects.get(id=offer_id)
+        else:
+            offer=None  
+        try:
+            cat = category.objects.get(id=categor)
+            bbrand= brand.objects.get(id=brandname)
+        except:
+            cat = None
+            bbrand = None    
 
 
         a=Product.objects.get(id=id)
 
         a.product_name=pname
-        a.brandname=brandname
+        a.brandname=bbrand
         a.description=description
         a.price=price
         a.image=image
         a.image1=image1
         a.image2=image2
         a.image3=image3 
+        a.offers=offer
         a.specs=specs
         # a.stock=stock
-        a.category=categor
+        a.category=cat
 
         a.save()
         return redirect('product')
@@ -136,7 +148,8 @@ def edit(request,id):
     context={
         'cat':cat,
         'brnd':brnd,
-        'product':a
+        'product':a,
+        'offers': Offers.objects.all().order_by('id')
 
     }
     return render(request,'Adminpanel/edit.html',context)
@@ -543,5 +556,67 @@ def editvarieant(request,id):
 
 
     return render(request,'Adminpanel/editvarieant.html',data)
+
+
+def salesinvoice(request):
+    return render(request,'Adminpanel/salesinvoice.html')
     
+
+def offers_list(request):
+    if request.method == 'POST':
+        offr_id = request.POST.get('offer_id')
+        offr_name=  request.POST.get('name')
+        discount=  request.POST.get('discount')
+        start_date=  request.POST.get('start_date')
+        end_date=  request.POST.get('end_date')
+        
+        offer = Offers.objects.get(id=offr_id)
+       
+        if offr_name:
+            offer.name =offr_name
+        if discount:
+            offer.discount =discount
+        if start_date:
+            offer.start_date =start_date   
+        if end_date:
+            offer.end_date =end_date
+            
+        offer.save() 
+        
+        messages.success(request, 'New update added successfully')            
+        return render(request, 'Adminpanel/offers_list.html', {'offers': Offers.objects.all().order_by('id')})
+        
+        
+    return render(request, 'Adminpanel/offers_list.html', {'offers': Offers.objects.all().order_by('id')})
+
+
+def add_offer(request):
+        offr_name=  request.POST.get('name')
+        discount=  request.POST.get('discount')
+        start_date=  request.POST.get('start_date')
+        end_date=  request.POST.get('end_date')
+        
+        if not start_date:
+            messages.success(request, 'Date Field cant be empty..!')
+            return redirect('offers_list')
+        if not end_date:
+            messages.success(request, 'Date Field cant be empty..!')
+            return redirect('offers_list')
+            
+        if offr_name:
+            offr_name= offr_name.strip()
+            exist = Offers.objects.filter(name= offr_name)
+            if exist:
+                messages.success(request, 'Offer name already exist..!')
+                return redirect('offers_list')
+            if discount: 
+                Offers.objects.create(name=offr_name, discount= discount, start_date= start_date, end_date= end_date)
+                return redirect('offers_list') 
+            else:
+                messages.success(request, 'Please Specify a discount..!')
+                return redirect('offers_list')  
+                    
+        else:
+            messages.success(request, 'Offer should have a name..!')
+            return redirect('offers_list')
   

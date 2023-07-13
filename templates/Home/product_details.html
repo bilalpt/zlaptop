@@ -6,18 +6,29 @@
 <script src="https://unpkg.com/js-image-zoom@0.4.1/js-image-zoom.js" type="application/javascript"></script>
 
 
+<style>
+    
+* {box-sizing: border-box;}
 
-<!-- <style>
-    .zoom-container {
-        width: 40px; /* Adjust the width to fit your layout */
-        height: 40px; /* Adjust the height to fit your layout */
-        overflow: hidden;
-    }
+.img-magnifier-container {
+  position: relative;
+}
 
-    .zoomed-image {
-        width: 100%;
-    }
-</style> -->
+.img-magnifier-glass {
+  position: absolute;
+  border: 1px solid #000;
+  /* border-radius: 50%; */
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 120px;
+  height: 120px;
+  visibility: hidden;
+}
+.img-magnifier-container :hover .img-magnifier-glass{
+    visibility: inherit;
+}
+
+</style>
 
 
 
@@ -54,60 +65,89 @@
 
 
         <section class="md">
-            <div class="container">
+            <div class="container ">
         
                 <!-- product section -->
                 <div class="row mb-6 mb-md-7 mb-lg-9 product_data" style="background-color: rgb(252, 248, 248);">
-                    <div class="col-lg-5 text-center text-lg-start mb-1-9 mb-lg-0 mt-4 ">
+                    <div class="col-lg-3 text-center text-lg-start mb-1-9 mb-lg-0 mt-4  me-5">
                         
 
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                            <div class="carousel-indicators">
-                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div>
-                        <div class="big-image" id="img-container">
-                            <div class="carousel-inner" id="img-container" style="width: 400px">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" >
 
-                              <div class="carousel-item active" >
-                                <img src="{{product.image.url}}" class="d-block w-100"id="img-container" alt="...">
+
+
+                            <div class="big-image"  style="width: 25rem; height: 10rem;">
+
+                        
+                            <div class="carousel-inner img-magnifier-container" >
+
+
+                              <div class="carousel-item active " >
+                                {% if product.image %}
+
+                                <img src="{{product.image.url}}" id="myimage" class="d-block "id="myimage" alt="...">
+                                {% endif %}
+
                               </div>
 
 
                               <div class="carousel-item ">
-                                <img src="{{product.image2.url}}" class="d-block w-100 xzoom zoomed-image"id="img-container" alt="...">
+                                
+                                {% if product.image2 %}
+                                    
+                              
+                                    
+                                <img src="{{product.image2.url}}" class="d-block"id="myimage" alt="...">
+                                {% endif %}
                               </div>
                               <div class="carousel-item ">
-                                <img src="{{product.image3.url}}" class="d-block w-100 xzoom zoomed-image"id="img-container" alt="...">
+                                {% if product.image2 %}
+
+                                <img src="{{product.image3.url}}" class="d-block "id="myimage" alt="...">
+                                {% endif %}
+
                               </div>
+
+
                             </div>
-                         </div>   
+                         </div>
+                        
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                               <span class="visually-hidden">Previous</span>
                             </button>
+                            <div style="margin-left: 55px;">
                             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="carousel-control-next-icon"  aria-hidden="true"></span>
                               <span class="visually-hidden">Next</span>
                             </button>
+                            </div>
                         </div>
 
-
+                    </div>
 
         
                         <!-- product left start -->
+                        <div class="col-lg-2">
                         <div class="xzoom-container">
-                            <!-- <img class="xzoom5 mb-1-9" id="xzoom-magnific" src="{{product_details.image.url}}" alt="..." /> -->
-                            <div class="xzoom-thumbs no-margin">
-                                <img class="xzoom-gallery5" width="80" src="{{product.image.url}}" xpreview="img/products/single-product/preview/01_product.jpg" title="The description goes here"></a>
-                                <img class="xzoom-gallery5" width="80" src="{{product.image2.url}}" title="The description goes here"></a>
-                                <img class="xzoom-gallery5" width="80" src="{{product.image3.url}}" title="The description goes here"></a>
+                            <div class="xzoom-thumbs me-5 ms-5 mt-2-3">
+                                {% if product.image %}
+                                <img class="xzoom-gallery5" width="70" src="{{product.image.url}}" xpreview="img/products/single-product/preview/01_product.jpg" title="The description goes here"></a>
+                                {% endif %}
+                                {% if product.image2 %}
+
+                                <img class="xzoom-gallery5" width="70" src="{{product.image2.url}}" title="The description goes here"></a>
+                                {% endif %}
+                                {% if product.image3 %}
+                                <img class="xzoom-gallery5" width="70" src="{{product.image3.url}}" title="The description goes here"></a>
+                                {% endif %}
+
                             </div>
                         </div>
+                        </div>
+
                         <!-- product left end -->
         
-                    </div>
                     <div class="col-lg-6 ps-lg-2-3 mt-5 ms-5">
                         <div class="product-detail me-5">
                             <h2 class="mb-1 pb-4">{{product.product_name}} </h2>
@@ -125,7 +165,17 @@
                             </div>
                             {% else %}
                             <div class="mb-4 pb-3">
-                                <span class="display-26 font-weight-700 text-primary ">RS :{{product_details.price}}</span>
+                                
+                                {% if product_details.vproduct.offers %}
+                                <span class="display-26 font-weight-700 text-primary "></span>
+                                RS :{{product_details.offer_price}}
+                               <del>RS :{{product_details.price}}</del> 
+                            </span>
+                                {% else %}
+                                <span class="display-26 font-weight-700 text-primary "></span>
+                                RS :{{product_details.price}}</span> 
+                                {% endif %}
+                                    
                             </div>
                             {% endif %}
 
@@ -198,16 +248,77 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/2.2.3/jquery.elevatezoom.js
 "></script> -->
 
+<script>
+    function magnify(imgID, zoom) {
+  var img, glass, w, h, bw;
+  img = document.getElementById(imgID);
+
+  /* Create magnifier glass: */
+  glass = document.createElement("DIV");
+  glass.setAttribute("class", "img-magnifier-glass");
+
+  /* Insert magnifier glass: */
+  img.parentElement.insertBefore(glass, img);
+
+  /* Set background properties for the magnifier glass: */
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  bw = 3;
+  w = glass.offsetWidth / 2;
+  h = glass.offsetHeight / 2;
+
+  /* Execute a function when someone moves the magnifier glass over the image: */
+  glass.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnifier);
+
+  /*and also for touch screens:*/
+  glass.addEventListener("touchmove", moveMagnifier);
+  img.addEventListener("touchmove", moveMagnifier);
+  function moveMagnifier(e) {
+    var pos, x, y;
+    /* Prevent any other actions that may occur when moving over the image */
+    e.preventDefault();
+    /* Get the cursor's x and y positions: */
+    pos = getCursorPos(e);
+    x = pos.x;
+    y = pos.y;
+    /* Prevent the magnifier glass from being positioned outside the image: */
+    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+    if (x < w / zoom) {x = w / zoom;}
+    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+    if (y < h / zoom) {y = h / zoom;}
+    /* Set the position of the magnifier glass: */
+    glass.style.left = (x - w) + "px";
+    glass.style.top = (y - h) + "px";
+    /* Display what the magnifier glass "sees": */
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+  }
+
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /* Get the x and y positions of the image: */
+    a = img.getBoundingClientRect();
+    /* Calculate the cursor's x and y coordinates, relative to the image: */
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /* Consider any page scrolling: */
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+</script>
 
 <script>
-    var options = {
-        width: 400,
-        zoomWidth: 500,
-        offset: {vertical: 0, horizontal: 10}
-    };
-    new ImageZoom(document.getElementById("img-container"), options);
-    
-    </script>
+    /* Execute the magnify function: */
+    magnify("myimage", 3);
+    /* Specify the id of the image, and the strength of the magnifier glass: */
+</script>
+
+
+
 
 
 <!-- <script>

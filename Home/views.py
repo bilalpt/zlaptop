@@ -8,6 +8,9 @@ from django.http.response import JsonResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_control
 from django.contrib import messages
 from django.utils import timezone
+from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.hashers import check_password
+from django.core.exceptions import ValidationError
 
 
 # Pdf
@@ -114,6 +117,9 @@ def product_details(request,product_id, pr=None):
     }
     return render(request,'Home/product_details.html',context)
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='log')
+
 def my_profile(request):
     user=User.objects.get(username= request.user)
     # if request.user.is_authenticated:
@@ -124,6 +130,9 @@ def my_profile(request):
         
     }
     return render(request,'Home/myprofile.html',one)
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='log')
 
 
 def edit_profile(request):
@@ -355,7 +364,10 @@ def checkout1(request):
     sub_total=0
     shipping = 40
     for items in mcart:
-        sub_total+= items.product_qty*items.variations.price
+        if items.variations.vproduct.offers:
+            sub_total+= items.product_qty*items.variations.offer_price()
+        else:    
+            sub_total+= items.product_qty*items.variations.price
 
     grand_total = sub_total + shipping
 
@@ -374,6 +386,7 @@ def checkout1(request):
 
     if request.method=='POST':
         payment_mode=request.POST.get('payment')
+        new_totaal = request.POST.get('new_totaal')
         address_id=request.POST.get('address')
         print(payment_mode,address_id,'sifan')
         # if payment_mode != 'Cash on delivery':
@@ -387,6 +400,8 @@ def checkout1(request):
                 
         address = billing_address.objects.get(id=address_id)
         qty = 0
+        if new_totaal:
+            grand_total=new_totaal
         order=Order(user=request.user, address= address, total_amount=grand_total, mode_of_payment=payment_mode)
         order.save()
         for item in mcart:
@@ -496,7 +511,8 @@ def addtocart(request):
         
     return redirect('/')
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='log')
 def mycart(request):
 
     mycart=Cart.objects.filter(user=request.user)
@@ -511,7 +527,10 @@ def mycart(request):
     sub_total=0
     shipping = 40
     for items in mycartitem:
-        sub_total+= items.product_qty*items.variations.price
+        if items.variations.vproduct.offers:
+            sub_total+= items.product_qty*items.variations.offer_price()
+        else: 
+            sub_total+= items.product_qty*items.variations.price
 
     grand_total = sub_total + shipping
     context={
@@ -539,9 +558,15 @@ def updatecart(request):
             mcart=Cart.objects.filter(user=request.user)
             one=0
             shipping = 40
+
+
             for items in mcart:
-                one+= items.product_qty*items.variations.price
-                sub_total=one+shipping
+                if items.variations.vproduct.offers:
+                    one+= items.product_qty*items.variations.offer_price()
+                    sub_total=one+shipping
+                else:
+                    one+= items.product_qty*items.variations.price
+                    sub_total=one+shipping
                 if items.product_qty == 10:
                     return JsonResponse({'status':"Only allowed this quantity", 'new_total': sub_total,})
                 else:
@@ -659,6 +684,49 @@ def apply_coupon(request):
 
     
 
-    
+    # invoice download
+
+def invoicedownload(request,id):
+    order=Ordered_Product.objects.filter(id=id)
+
+    context={
+        'order':order
+    }
+    return render(request,'Home/invoicedownload.html',context)
+
+
+
+# Reset Password
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='log')
+def reset_password(request):
+   curr_pass = request.POST.get('curr_pass')
+   new_pass1 = request.POST.get('new_pass')
+   new_pass2 = request.POST.get('new_pass2')
+   
+   user = request.user
+  
+   if check_password(curr_pass,user.password ):
+       if new_pass1 == new_pass2:
+            try:
+                validate_password(new_pass1)
+            except ValidationError as e:
+                # Handle the validation error
+                error_message = ', '.join(e.messages)
+                messages.error(request, error_message)
+                return render(request,'Home/myprofile.html')
+            user.set_password(new_pass1)
+            user.save()
+            messages.success(request,"Password Updated Successfully, Login Now..!")    
+            return redirect('log')
+       else:
+            messages.success(request,"Passwords Missmatch..")    
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+           
+   else:
+        messages.success(request,"Please enter your correct password")    
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 
 

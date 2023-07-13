@@ -81,6 +81,17 @@ urlpatterns = [
     path('apply_coupon',views.apply_coupon,name='apply_coupon'),
     
 
+    # invoicedonload
+
+    path('invoicedownload/<int:id>',views.invoicedownload,name='invoicedownload'),
+
+    #reset pass
+    path('reset_password',views.reset_password,name='reset_password'),
+    
+ 
+
+    
+
 
 
 ]

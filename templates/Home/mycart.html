@@ -49,7 +49,17 @@
                   <h6>{{ item.variations.vproduct.product_name }}</h6>
                 </div>
                 <div class="col-md-2 my-auto">
-                  <h6>Rs{{ item.variations.price }}</h6>
+
+                  <h6>
+                  {% if item.variations.vproduct.offers %}
+                  
+                  Rs{{ item.variations.offer_price }}
+
+                  {% else %}
+                  Rs{{ item.variations.price }}
+
+                  {% endif %}
+                  </h6>
 
                 </div>
                   <div class="col-md-2 my-auto">
