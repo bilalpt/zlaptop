@@ -2,16 +2,16 @@
 {% block content %}
 <div class="container ">
     <div class="row justify-content-center mt-5">
-                        <!-- Start Messages Area -->
-                        {% if messages %}
-                        {% for message in messages%}
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <strong>{{message}}</strong>
-                        </div>
-                        {% endfor %}
-                        {% endif %}
-                        <!-- End  Messages Area -->
+        <!-- Start Messages Area -->
+        {% if messages %}
+        {% for message in messages%}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>{{message}}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <!-- End  Messages Area -->
         <div class="usercreat border border-radius-3 card col-5 p-4 ">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}

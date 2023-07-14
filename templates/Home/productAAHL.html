@@ -20,6 +20,14 @@
 
             </div>
         </section>
+        <div style="margin-left: 1200px; margin-top: 50px;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <form class="d-flex" method="get" action="{% url 'search_product' %}">
+                <input class="form-control me-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-primary" type="submit">Search</button>
+              </form>
+            </nav>
+          </div> 
 
 <section >
     <div class="container">
@@ -42,11 +50,11 @@
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
                                         <div class="card-body">
                                             <ul class="list-unstyled">
-                                                <li><a href="#">Bussiness Laptop</a></li>
-                                                <li><a href="#">Chrom Book</a></li>
-                                                <li><a href="#">Commercial Laptop</a></li>
-                                                <li><a href="#">Gaming Laptop</a></li>
-    
+                                                {% for i in cat %}
+                                                
+                                                    
+                                                <li><a href="/Home/productAAHL?category={{i.id}}">{{i.category_name}}</a></li>
+                                                {% endfor %}
                                             </ul>
                                         </div>
                                     </div>
@@ -62,9 +70,13 @@
                         </div>
                         <div class="product-description">
                             <h3><a href="{% url 'product_details' i.vproduct.id 0 %}">{{i.vproduct.description}}</a></h3>
-                            <h4 class="price">
-                                            <span class="regular-price ">Rs{{i.price}}</span>
-                                        </h4>
+                            {% if i.vproduct.offers %}
+                            <span style="color: green;">₹{{i.offer_price}}</span>
+                            <del>₹{{i.price}}</del> 
+                            {% else %}
+                           <span style="color: blue;"> ₹{{i.price}}</span>
+                                
+                            {% endif %}
                         </div>
 
                     </div>

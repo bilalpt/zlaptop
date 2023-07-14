@@ -223,8 +223,13 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="{% url 'cupon' %}">
               <i class="bi bi-circle"></i><span>Add Coupon</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'coupon_details' %}">
+              <i class="bi bi-circle"></i><span>Coupon details</span>
             </a>
           </li>
 

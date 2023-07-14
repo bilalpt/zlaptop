@@ -7,6 +7,7 @@ urlpatterns = [
     path('addproduct',views.addproduct,name='addproduct'),
     path('ads',views.ads,name='ads'),
     path('cupon',views.cupon,name='cupon'),
+    path('coupon_details',views.coupon_details,name='coupon_details'),
     path('customers',views.customers,name='customers'),
     path('custtransaction',views.custtransaction,name='custtransaction'),
     #Dash board
@@ -56,6 +57,8 @@ urlpatterns = [
     path('offers_list',views.offers_list,name='offers_list'),
 
     path('add_offer',views.add_offer,name='add_offer'),
+
+
 
 
 

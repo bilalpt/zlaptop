@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from Adminpanel.models import Product,brand,Variations,Processor,Ordered_Product,Order, Offers
+from Adminpanel.models import Product,brand,Variations,Processor,Ordered_Product,Order, Offers,Coupon
 from categories.models import category
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -34,6 +34,8 @@ def addproduct(request):
         image3=request.FILES.get('image3')
         # stock=request.POST.get('stock')
         specs=request.POST.get('specs')
+        offer_id = request.POST.get('offers')
+
 
 
         # stock=request.POST.get('stock')
@@ -50,14 +52,24 @@ def addproduct(request):
 
         if int(price)<1:
             messages.error(request,'Please enter valuable amount')
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
+        if offer_id:
+            offer= Offers.objects.get(id=offer_id)
+        else:
+            offer=None  
+        try:
+            catego = category.objects.get(id=categ)
+            brnd = brand.objects.get(id=brandname)
+        except:
+            cat = None
+            bbrand = None 
 
 
         
-        catego = category.objects.get(id=categ)
-        brnd = brand.objects.get(id=brandname)
 
-        one=Product(product_name=pname,brandname=brnd,description=description,image=image,category=catego,image1=image1,image2=image2,image3=image3,price=price,specs=specs)
+
+        one=Product(product_name=pname,brandname=brnd,description=description,image=image,category=catego,image1=image1,image2=image2,image3=image3,price=price,specs=specs,offers=offer)
         one.save()
 
         messages.success( request,'Product  Added Successfully ')
@@ -72,6 +84,7 @@ def addproduct(request):
     con={
         'A': cat,
         'B': brnd,
+        'offers':Offers.objects.all().order_by('id')
         
         }
 
@@ -164,7 +177,36 @@ def ads(request):
     return render(request,'Adminpanel/ads.html')
 
 def cupon(request):
+    if request.method=='POST':
+        coupon_code=request.POST.get('coupon_code')
+        discount=request.POST.get('discount')
+        minimum_purchase=request.POST.get('minimum_purchase')
+
+        if  coupon_code=='':
+            messages.error(request,'please Add coupon code')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
+        if  discount=='' or minimum_purchase=='':
+            messages.error(request,'please Add discount')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
+        if  minimum_purchase=='':
+            messages.error(request,'please Add minimum purchase')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
+        cupon=Coupon(coupon_code=coupon_code,discount=discount,minimum_purchase=minimum_purchase)
+        cupon.save()
+
+        messages.success( request,'Coupon  Added Successfully ')
+
     return render(request,'Adminpanel/cupon.html')
+
+
+def coupon_details(request):
+    return render(request,'Adminpanel/coupon_details.html')    
+
+
+
 
 def customers(request):
 
@@ -420,6 +462,20 @@ def variations(request):
 
         product_list   = Product.objects.get(id=product)
         processor_list = Processor.objects.get(id=processor)
+
+
+        
+        if quantity=='' or price=='':
+            messages.error(request,'please enter Quantity or Price')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
+        if int(quantity)<1:
+            messages.error(request,'Please enter valuable quantity')
+            return redirect('variations')
+
+        if int(price)<1:
+            messages.error(request,'Please enter valuable Price')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
         one=Variations(vproduct=product_list,Vprocessor=processor_list,quantity=quantity,price=price)

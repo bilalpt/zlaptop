@@ -87,6 +87,9 @@ urlpatterns = [
 
     #reset pass
     path('reset_password',views.reset_password,name='reset_password'),
+
+    #serach product
+    path('search_product',views.search_product,name='search_product'),
     
  
 

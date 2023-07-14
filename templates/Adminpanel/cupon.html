@@ -1,4 +1,63 @@
+
+{% extends 'Adminpanel/common.html' %}
+{% block content %}
+<div class="container ">
+    <div class="row justify-content-center mt-5">
+        <div class="usercreat border border-radius-3 card col-5 p-4 ">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-2">
+                    <label for="" class="form-label">Coupon code</label>
+                    <input type="text" name="coupon_code" id="" class="form-control bg-transparent " >
+                </div>
+                <div class="mb-2">
+                  <label for="" class="form-label">Discount
+                  </label>
+                  <input type="text" name="discount" id="" class="form-control bg-transparent " >
+              </div>
+              <div class="mb-2">
+                <label for="" class="form-label">Minimum purchase:
+                </label>
+                <input type="text" name="minimum_purchase" id="" class="form-control bg-transparent " >
+            </div>
+
+
+                <div class="d-grid">
+                    <button class="btn btn-success btn-lg"  type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+            <!-- Start Messages Area -->
+            {% if messages %}
+            {% for message in messages%}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>{{message}}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <!-- End  Messages Area -->
+
+
+</div>
+
 <script>
+    alertify.set('notifier','position', 'bottom-right');
+    ('{% for mes in messages %}')
+    alertify.success('{{mes}}');
+    ('{% endfor %}')
+
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+<!-- <script>
 $(document).ready(function() {
     $(document).on('click', '.delete-cart-item', function(e) {
       e.preventDefault();
@@ -27,16 +86,7 @@ $(document).ready(function() {
       });
     });
   });
-  </script>
-
-
-
-
-
-
-
-
-<script>
+  </script> -->
 
     
     

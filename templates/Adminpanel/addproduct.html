@@ -73,6 +73,16 @@
                       {% endfor %}
                   </select>
 
+                <div class="form-outline mb-4">
+                    <label  for="selectOption2">Offers:</label> 
+                    <select class="form-control" id="selectOption2" name="offers">
+                      <option value="">Choose..</option>
+                      {% for offer in offers  %}
+                      <option value="{{offer.id}}">{{offer.name}}</option>
+                      {% endfor %}
+                    </select>
+                </div>
+
                 </div>
                 <div class="d-grid">
                     <button class="btn btn-success btn-lg"  type="submit" onsubmit="return submint('File Uploaded')">Create</button>

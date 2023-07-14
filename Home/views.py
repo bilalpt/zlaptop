@@ -40,7 +40,6 @@ def home(request):
     variated_products=Variations.objects.all()[:4]
     cat = category.objects.all().order_by('id')[:4]
     bran=brand.objects.all().order_by('id')[:4]
-
     context = {
         'one':variated_products,
         'key':cat,
@@ -52,12 +51,53 @@ def home(request):
 
 #productAAHL
 def productAAHL(request):
-    single_product=Variations.objects.all().order_by('id')
+    cat=category.objects.all().order_by('id')
+    category_id = request.GET.get('category')
 
+    if category_id:
+        pro = Product.objects.filter(category=category_id)
+        if not pro:
+            single_product=Variations.objects.all().order_by('id')
+            cat=category.objects.all().order_by('id')
+
+            context={
+                'one':single_product,
+                'cat':cat,
+            }
+            messages.error(request,'No item available in this Brand')
+            return render(request, 'Home/productAAHL.html',context)
+        for product in pro:
+            product_id = product.id
+            single_product=Variations.objects.filter(vproduct = product_id).order_by('id')
+    else:
+        single_product=Variations.objects.all().order_by('id')
+    
+    
     context={
-        'one':single_product
+        'one':single_product,
+        'cat':cat,
     }
     return render(request,'Home/productAAHL.html',context)
+
+def search_product(request):
+
+    if 'search_product' in request.GET:
+        prod=request.GET['search_product']
+
+        if prod.strip()=='':
+            messages.error(request,'No result found please try again ')
+
+        if prod:
+            products=Variations.objects.filter(vproduct__product_name__icontains=prod) 
+
+        context={
+            'products':products
+        }
+
+    return render('Home/productAAHL.html',context)
+ 
+
+
 
 def footer(request):
     return render(request,'footer.html')
@@ -308,50 +348,6 @@ def delete_billaddress(request,id):
 
 
 def cart(request):
-
-    # if request.method=='POST':
-    #     if request.user.is_authenticated:
-    #         product_id=int(request.POST.get('product_id'))
-    #         product_check=Product.objects.get(id=product_id)
-    #         # product_stock=Product.objects.get(product_stock=product_stock)
-    #         print('baxter')
-    #         if(product_check):
-    #             if(Cart.objects.filter(user=request.user.id, product_id=product_id)):                    
-                    
-    #                 qnty = int(request.POST.get('product_qty'))
-    #                 product=Cart.objects.get(user=request.user, product_id = product_id)
-
-    #                 product.product_qty = qnty
-    #                 product.save()
-
-                    
-    #                 mcart=Cart.objects.filter(user=request.user)
-    #                 sub_total=0
-    #                 for items in mcart:
-    #                     sub_total+= items.product_qty*items.product.price
-
-    #                 return JsonResponse({'status':" Updated successfuly",'new_total':sub_total})
-    #             else:
-    #                 product_qty=int(request.POST.get('product_qty'))
-
-    #                 if product_check.stock >= product_qty:
-    #                     Cart.objects.create(user=request.user, product_id=product_id, product_qty=product_qty)
-                        
-    #                     mcart=Cart.objects.filter(user=request.user)
-    #                     sub_total=0
-    #                     for items in mcart:
-    #                         sub_total+= items.product_qty*items.product.price
-                    
-
-    #                     return JsonResponse({'status':"Product added successfuly",'new_total':sub_total})
-    #                 else:
-    #                     return JsonResponse({'status':"only"+str(product_check.quantity) + "quantity available"})
-
-    #         else:
-    #             return JsonResponse({'status:"No such product found'})  
-
-    #     else:
-    #         return JsonResponse({'status':"Login to Continue"})
 
     return redirect('/')
 
