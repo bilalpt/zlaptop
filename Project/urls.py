@@ -27,7 +27,7 @@ urlpatterns = [
     path('Adminpanel/',include('Adminpanel.urls')),
     path('categories/',include('categories.urls')),
     path('checkout/',include('checkout.urls')),
-    path('Home/',include('Home.urls')),
+    path('',include('Home.urls')),
     path('mcwoh/',include('mcwoh.urls')),
 
 
