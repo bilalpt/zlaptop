@@ -68,7 +68,7 @@
                     <div class="col-md-6 mt-6">
                         <div class="bg-img cover-background mx-2 my-2 py-2-3 px-1-6 px-md-1-9" style="background-image:url('{{i.cart_img.url}}'); width: 33rem; height: 15rem;">
                             <h4 class="mb-1-9 text-white-50">{{i.category_name}}<br><span class="text-primary">{{i.description}}</span></h4>
-                            <a href="#" class="butn-style1 fill"><span>shop now</span></a>
+                            <a href="{% url 'productAAHL' %}" class="butn-style1 fill"><span>shop now</span></a>
                         </div>
                     </div>
                     {% endfor %}
@@ -83,38 +83,19 @@
 
         <!-- OFFERS
         ================================================== -->
-        <section class="bg-img cover-background background-position-x-25" style="background-image:url('{% static 'img/off.jpg'%}')">
+        <section class="bg-img cover-background background-position-x-25 mx-5 rounded " style="margin-top: 100px; background-image:url('{% static 'img/offer.jpg'%}')">
             <div class="container">
                 <div class="text-center">
 
                     <div class="text-center mb-2-3 mb-lg-2-7">
                         <span class="font-weight-600 text-primary display-29">Get <span class="text-danger">70%</span> off to your order</span>
-                        <h3 class="mb-0">Limited Time Offer!</h3>
+                        <h3 class="mb-0" style="color: antiquewhite;">Limited Time Offer!</h3>
                     </div>
 
                     <ul class="countdown count-style-one text-center p-0 m-0">
-                        <!-- days -->
-                        <li><span class="days">00</span>
-                            <p class="timeRefDays text-center">days</p>
-                        </li>
-                        <!-- end days -->
-                        <!-- hours -->
-                        <li><span class="hours">00</span>
-                            <p class="timeRefHours">hours</p>
-                        </li>
-                        <!-- end hours -->
-                        <!-- minutes -->
-                        <li><span class="minutes">00</span>
-                            <p class="timeRefMinutes">minutes</p>
-                        </li>
-                        <!-- end minutes -->
-                        <!-- seconds -->
-                        <li><span class="seconds">00</span>
-                            <p class="timeRefSeconds">seconds</p>
-                        </li>
-                        <!-- end seconds -->
+                        
                     </ul>
-                    <a href="shop-product-grid.html" class="butn-style1 fill mt-2-3 mt-lg-2-7"><span>Shop Now</span></a>
+                    <a href="{% url 'productAAHL' %}" class="butn-style1 fill mt-2-3 mt-lg-2-7"><span>Shop Now</span></a>
                 </div>
 
             </div>

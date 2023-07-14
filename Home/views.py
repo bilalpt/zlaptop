@@ -81,20 +81,22 @@ def productAAHL(request):
 
 def search_product(request):
 
-    if 'search_product' in request.GET:
-        prod=request.GET['search_product']
-
+    if 'keyword' in request.GET:
+        prod=request.GET['keyword']
         if prod.strip()=='':
             messages.error(request,'No result found please try again ')
 
         if prod:
-            products=Variations.objects.filter(vproduct__product_name__icontains=prod) 
+            products=Variations.objects.filter(vproduct__product_name__icontains=prod)
+            cat=category.objects.all().order_by('id')
+
 
         context={
-            'products':products
+            'one':products,
+            'cat':cat
         }
 
-    return render('Home/productAAHL.html',context)
+    return render(request,'Home/productAAHL.html',context)
  
 
 
