@@ -52,7 +52,7 @@ def signup(request):
 
 #validation
             if fname.strip()==''or lname.strip()==''or email.strip()=='' or pass1.strip()=='' or pass2.strip()=='':
-                messages.error(request,"Feild can't be blank") 
+                messages.error(request,"Feild can't be blank")
                 return redirect('signup')
             if pass1!=pass2:
                 messages.error(request,"Password dosn't match")
@@ -83,9 +83,15 @@ def signup(request):
                 )
             messages.error(request,"Please enter OTP and Finish the registration..!!")
             return render(request,'Login/signup.html',{'otp':True,'usr':user})
+        
+    user=User.objects.all()
+    context={
+        'user':user
+
+    }
             
             
-    return render(request,'Login/signup.html')
+    return render(request,'Login/signup.html',context)
 
 # def log(request):
 #     return render(request,'Login/login.html')

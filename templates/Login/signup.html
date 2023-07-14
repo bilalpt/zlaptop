@@ -52,7 +52,12 @@
 
           <div class="pt-5">
               <h2 class="fw-bold pt-4">SIGNUP</h2>
-              <p class=" text-white-50  pt-2">Please enter your details!</p>
+              {% if messages %}
+              
+              {% for i in messages %}
+              <p class=" text-white-50  pt-2">{{i}}</p>
+              {% endfor %}
+              {% endif %}
               <form method="POST" name="form1" onsubmit="return Signup()">
                 {% csrf_token %}
 

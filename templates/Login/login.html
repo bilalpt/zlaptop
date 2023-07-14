@@ -25,7 +25,18 @@
         <div class="login-form  container text-center">
           <div class="pt-5">
               <h2 class="fw-bold pt-4">User Login</h2>
-              <p class=" text-white-50  pt-2">Please enter your login and password!</p>
+              
+              {% if messages %}
+              
+              {% for i in messages %}
+                                   
+              <p class=" text-white-50  pt-2">{{i}}</p>
+
+              {% endfor %}
+              {% endif %}
+
+
+
               <div class="form-outline form-white mb-4 pt-5 mx-4">
                 <input placeholder="Name" type="text" id="typeEmailX" class="form-control form-control-lg" name="Name">
               </div>
