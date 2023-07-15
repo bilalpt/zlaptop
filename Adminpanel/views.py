@@ -19,6 +19,8 @@ from django.contrib.auth import authenticate, login ,logout as dj_logout
 
 # Create your views here.
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='adminlogin')
 def addproduct(request):
     one=None
 
@@ -90,6 +92,8 @@ def addproduct(request):
 
     return render(request,'Adminpanel/addproduct.html',con)
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='adminlogin')
 def edit(request,id):
     if request.method=='POST':
         pname=request.POST.get('Product_name')
@@ -176,6 +180,8 @@ def delete(request,id):
 def ads(request):
     return render(request,'Adminpanel/ads.html')
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='adminlogin')
 def cupon(request):
     if request.method=='POST':
         coupon_code=request.POST.get('coupon_code')
@@ -207,7 +213,8 @@ def coupon_details(request):
 
 
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='adminlogin')
 def customers(request):
 
 
@@ -249,7 +256,8 @@ def search_customers(request):
 
 
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='adminlogin')
 def customer_block(request,user_id):
     user_details=User.objects.get(id=user_id)
     if user_details.is_active:
@@ -265,7 +273,8 @@ def custtransaction(request):
     return render(request,'Adminpanel/customertransaction.html')
 
 #Dashboard
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='adminlogin')
 def dashboard(request):
     delivered_items = Ordered_Product.objects.filter(status='Delivered')
 
@@ -348,6 +357,8 @@ def products(request):
 def superuser(request):
     return render(request,'Adminpanel/superuser.html')
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='adminlogin')
 def common(request):
 
     return render(request,'Adminpanel/common.html')
