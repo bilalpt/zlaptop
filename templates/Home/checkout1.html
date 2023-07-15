@@ -223,7 +223,7 @@
                       url:"{%url 'checkout1'%}",
                       data: data,
                       success: function (responsec) {
-                        window.location.href = '/Home/order_history'
+                        window.location.href = '/order_history'
                         console.log(responsec)
                         swal("Congratulations!", responsec.status,"success").then((value) => {
                             
