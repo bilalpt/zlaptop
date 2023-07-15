@@ -209,7 +209,12 @@ def cupon(request):
 
 
 def coupon_details(request):
-    return render(request,'Adminpanel/coupon_details.html')    
+    cupon=Coupon.objects.all()
+    context={
+        'cupon':cupon
+
+    }
+    return render(request,'Adminpanel/coupon_details.html',context)    
 
 
 
@@ -308,8 +313,7 @@ def dashboard(request):
 from datetime import datetime, timedelta
 #sales report
 def salesreport(request):
-    # if not request.user.is_superuser:
-    #     return redirect('adminsignin')
+
     context = {}
     if request.method == 'POST':
         start_date = request.POST.get('start-date')

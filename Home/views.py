@@ -166,9 +166,11 @@ def my_profile(request):
     user=User.objects.get(username= request.user)
     # if request.user.is_authenticated:
     profile=profile_address.objects.all()
+    cupon=Coupon.objects.all()
     one={
         'user':user,
         'profile':profile,
+        'cupon':cupon,
         
     }
     return render(request,'Home/myprofile.html',one)
@@ -387,9 +389,7 @@ def checkout1(request):
         new_totaal = request.POST.get('new_totaal')
         address_id=request.POST.get('address')
         print(payment_mode,address_id,'sifan')
-        # if payment_mode != 'Cash on delivery':
-        #         messages.error(request,'please select Cash on delivery')
-        #         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))        
+       
         
         
         if not address_id:
@@ -405,8 +405,7 @@ def checkout1(request):
         for item in mcart:
             object=Ordered_Product(order_id=order, vproduct= item.variations, quantity= item.product_qty)
             object.save()
-            # var = Ordered_Product.vproduct.quantity - Ordered_Product.quantity
-            # var.save()
+
             item.delete()
         if payment_mode == 'Razorpay':
             return JsonResponse({'status' : "Yout order has been placed successfully"})
@@ -514,11 +513,6 @@ def addtocart(request):
 def mycart(request):
 
     mycart=Cart.objects.filter(user=request.user)
-    # for item in mycart:
-    #     if item.product_qty > item.variations.quantity:
-    #         return JsonResponse({'status': "not allowed"})
-
-
 
     
     mycartitem=Cart.objects.filter(user=request.user)
@@ -637,6 +631,8 @@ def deletewishlidtitem(request):
             return JsonResponse ({'status':"Login to continue"})    
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='log')
 def cancel_order(request,cancel_id):
    customer = request.user
    ord_prod = Ordered_Product.objects.get(id=cancel_id)

@@ -58,7 +58,7 @@
                                 <a class="list-group-items" style="color:  rgb(17, 91, 93);" href="{% url 'edit_profile'%}"><i class="ti-bag pe-2"></i>Edit Profile<span class="badge badge-pill"></span></a>
 
                                 <a class="list-group-items"  style="color:  rgb(17, 91, 93);" href="{% url 'shipping_address'%}"><i class="ti-location-pin pe-2"></i>Addresses</a>
-                                <a class="list-group-items" style="color:  rgb(17, 91, 93);" href="account-wishlist.html"><i class="ti-heart pe-2"></i>Wishlist</span></a>
+                                <a class="list-group-items" style="color:  rgb(17, 91, 93);" href="{% url 'wishlist' %}"><i class="ti-heart pe-2"></i>Wishlist</span></a>
                                 <a style="color: rgb(193, 91, 91); text-decoration: none;"  data-bs-toggle="modal" data-bs-target="#reset_password_modal">Change Password</a>
                                     <!-- /////////////////Reset Password Modal Body Start/////////////////////// -->
 
@@ -149,6 +149,48 @@
 
                     </div>
                     <!-- end right panel -->
+                    <!-- coupon -->
+                    <div class="col-lg-5" style="color:  rgb(17, 91, 93);margin-left: 450px; margin-top: -200px;" >
+
+                        <div class="common-block">
+
+                            
+
+
+
+
+                            <div class="inner-title" >
+                                <h4 class="mb-0" style="color:  rgb(17, 91, 93);">your coupons</h4>
+                            </div>
+
+
+
+                           <div>
+                            <thead>
+                                <tr>
+                                  <th><h6>Coupon :</h6></th>
+                                </tr>
+                                
+                                {% for i in cupon %}
+                                <div>
+                                                                    
+                                <tr>
+                                    <td>Coupon code :{{i.coupon_code}} | </td><td>Discount Price RS:{{i.discount}}</td><td style="margin-left: 20px;"> and Minimum purchase {{i.minimum_purchase}}Rs</td>
+
+                                </tr>
+                                </div>
+                                {% endfor %}
+
+                              </thead>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- coupon end -->
                 </div>
             </div>
         </section>

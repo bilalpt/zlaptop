@@ -1,0 +1,38 @@
+{% extends 'Adminpanel/common.html' %}
+
+{% block content %}
+
+<table class="table caption-top mt-2">
+  <a href=""><h4>List Of Coupon</h4></a>
+
+    <thead>
+
+      <tr>
+        <!-- <th scope="col">id</th> -->
+        <th scope="col">id</th>
+        <th scope="col">Coupon code</th>
+        <th scope="col">Discount</th>
+        <th scope="col">Minimum purchase:</th>
+
+        <th scope="col">Edit/delete</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in cupon %}
+      <tr>
+        <!-- <th scope="row">1</th> -->
+        <td>{{i.id}}</td>
+        <td>{{i.coupon_code}}</td>
+        <td>{{i.discount}}</td>
+        <td>{{i.minimum_purchase}}</td>
+
+
+        <td>
+            <a class="btn btn-primary me-2" href="" role="button" >Edit</a>
+            <a class="btn btn-danger" href="" role="button" onclick="return confirm('Are You Sure Want to delete')">Delete</a></td>
+      </tr>
+      {% endfor %}
+  </table>
+
+{% endblock %}
